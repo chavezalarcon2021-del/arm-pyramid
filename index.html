@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arm Pyramid</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<main class="app-shell">
+
+    <header class="hero">
+        <div class="eyebrow">ARM WRESTLING TOOL</div>
+
+        <h1>ARM PYRAMID</h1>
+
+        <p>Build your game. One pull at a time.</p>
+    </header>
+
+
+    <div class="mode-tabs">
+
+        <button class="mode-tab active">
+            ⚡ PRACTICE PULL
+        </button>
+
+        <button class="mode-tab disabled">
+            🔒 TRAINING MODE
+            <span>SOON</span>
+        </button>
+
+    </div>
+
+
+    <section class="practice-panel">
+
+        <div class="practice-top">
+
+            <div>
+                <div class="section-kicker">
+                    PRACTICE PULL MODE
+                </div>
+
+                <h2>
+                    Let the pyramid decide.
+                </h2>
+            </div>
+
+            <div class="ready-pill">
+                <span class="ready-dot"></span>
+                READY
+            </div>
+
+        </div>
+
+
+        <!-- PYRAMID -->
+
+        <div class="pyramid-zone">
+
+            <svg
+                class="pyramid-lines"
+                viewBox="0 0 800 560"
+                preserveAspectRatio="none"
+            >
+                <line x1="400" y1="35" x2="90" y2="520" />
+                <line x1="400" y1="35" x2="710" y2="520" />
+                <line x1="90" y1="520" x2="710" y2="520" />
+                <line x1="400" y1="35" x2="400" y2="520" />
+            </svg>
+
+
+            <div
+                class="technique-node apex"
+                data-technique="High Hook"
+                data-code="H1"
+                data-side="inside"
+            >
+                <div class="technique-name">HIGH HOOK</div>
+                <div class="technique-code red">H1</div>
+                <div class="node-dot"></div>
+            </div>
+
+
+            <div
+                class="technique-node h2"
+                data-technique="Hook & Drag"
+                data-code="H2"
+                data-side="inside"
+            >
+                <div class="node-copy left-copy">
+                    <div class="technique-name">HOOK & DRAG</div>
+                    <div class="technique-code red">H2</div>
+                </div>
+
+                <div class="node-dot"></div>
+            </div>
+
+
+            <div
+                class="technique-node h3"
+                data-technique="Hook & Drive"
+                data-code="H3"
+                data-side="inside"
+            >
+                <div class="node-copy left-copy">
+                    <div class="technique-name">HOOK & DRIVE</div>
+                    <div class="technique-code red">H3</div>
+                </div>
+
+                <div class="node-dot"></div>
+            </div>
+
+
+            <div
+                class="technique-node p1"
+                data-technique="Shoulder Press"
+                data-code="P1"
+                data-side="inside"
+            >
+                <div class="node-copy left-copy">
+                    <div class="technique-name">SHOULDER PRESS</div>
+                    <div class="technique-code red">P1</div>
+                </div>
+
+                <div class="node-dot"></div>
+            </div>
+
+
+            <div
+                class="technique-node p2"
+                data-technique="Flop Press"
+                data-code="P2"
+                data-side="inside"
+            >
+                <div class="node-copy left-copy">
+                    <div class="technique-name">FLOP PRESS</div>
+                    <div class="technique-code red">P2</div>
+                </div>
+
+                <div class="node-dot"></div>
+            </div>
+
+
+            <div
+                class="technique-node t1"
+                data-technique="Posting Toproll"
+                data-code="T1"
+                data-side="outside"
+            >
+                <div class="node-dot"></div>
+
+                <div class="node-copy">
+                    <div class="technique-name">POSTING TOPROLL</div>
+                    <div class="technique-code blue">T1</div>
+                </div>
+            </div>
+
+
+            <div
+                class="technique-node t2"
+                data-technique="Sweeping Toproll"
+                data-code="T2"
+                data-side="outside"
+            >
+                <div class="node-dot"></div>
+
+                <div class="node-copy">
+                    <div class="technique-name">SWEEPING TOPROLL</div>
+                    <div class="technique-code blue">T2</div>
+                </div>
+            </div>
+
+
+            <div
+                class="technique-node t3"
+                data-technique="Low-Hand Toproll"
+                data-code="T3"
+                data-side="outside"
+            >
+                <div class="node-dot"></div>
+
+                <div class="node-copy">
+                    <div class="technique-name">LOW-HAND TOPROLL</div>
+                    <div class="technique-code blue">T3</div>
+                </div>
+            </div>
+
+
+            <div
+                class="technique-node t4"
+                data-technique="Open Toproll"
+                data-code="T4"
+                data-side="outside"
+            >
+                <div class="node-dot"></div>
+
+                <div class="node-copy">
+                    <div class="technique-name">OPEN TOPROLL</div>
+                    <div class="technique-code blue">T4</div>
+                </div>
+            </div>
+
+
+            <div
+                class="technique-node km"
+                data-technique="King's Move"
+                data-code="KM"
+                data-side="outside"
+            >
+                <div class="node-dot"></div>
+
+                <div class="node-copy">
+                    <div class="technique-name">KING'S MOVE</div>
+                    <div class="technique-code blue">KM</div>
+                </div>
+            </div>
+
+
+            <div class="inside-word">INSIDE</div>
+            <div class="outside-word">OUTSIDE</div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="result-card">
+
+            <div class="result-top-row">
+
+                <div class="result-label">
+                    YOUR NEXT PULL
+                </div>
+
+                <div id="pullCounter">
+                    PULL #01
+                </div>
+
+            </div>
+
+            <div
+                class="result-technique"
+                id="technique"
+            >
+                READY?
+            </div>
+
+            <div
+                class="result-side"
+                id="techniqueSide"
+            >
+                PRESS START TO BEGIN
+            </div>
+
+        </div>
+
+
+        <button id="trainButton">
+            ⚡ START PULL
+        </button>
+
+
+        <!-- SHOULDER COMMITMENT -->
+
+        <div class="commitment-card">
+
+            <div class="commitment-title">
+                SHOULDER COMMITMENT
+            </div>
+
+            <div class="commitment-row">
+
+                <div class="commitment-box positive">
+                    +
+                </div>
+
+
+                <div class="commitment-scale">
+
+                    <div class="scale-track">
+
+                        <div class="scale-left"></div>
+                        <div class="scale-right"></div>
+
+                        <div
+                            class="scale-center-dot neutral"
+                            id="commitmentIndicator"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="scale-labels">
+
+                        <span class="left-number">+3</span>
+                        <span class="left-number">+2</span>
+                        <span class="left-number">+1</span>
+
+                        <span class="center-number">0</span>
+
+                        <span class="right-number">-1</span>
+                        <span class="right-number">-2</span>
+                        <span class="right-number">-3</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="commitment-box negative">
+                    −
+                </div>
+
+            </div>
+
+
+            <div class="commitment-descriptions">
+
+                <div class="commitment-description inside-description">
+
+                    <strong>
+                        MORE SHOULDER COMMITMENT
+                    </strong>
+
+                    <span>
+                        More side pressure, cup and pronation
+                    </span>
+
+                </div>
+
+
+                <div class="commitment-description outside-description">
+
+                    <strong>
+                        MORE TOPROLL COMMITMENT
+                    </strong>
+
+                    <span>
+                        More posting, rise and supination
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <section class="history-section">
+
+            <div class="history-header">
+
+                <div>
+                    <div class="history-kicker">
+                        PRACTICE ANALYTICS
+                    </div>
+
+                    <h3>
+                        Session History
+                    </h3>
+                </div>
+
+                <button id="clearHistoryButton">
+                    CLEAR SESSION
+                </button>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span>TOTAL PULLS</span>
+                    <strong id="totalPulls">0</strong>
+                </div>
+
+                <div class="stat-card inside-stat">
+                    <span>INSIDE</span>
+                    <strong id="insidePulls">0</strong>
+                </div>
+
+                <div class="stat-card outside-stat">
+                    <span>OUTSIDE</span>
+                    <strong id="outsidePulls">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>AVG. COMMITMENT</span>
+                    <strong id="averageCommitment">0</strong>
+                </div>
+
+            </div>
+
+
+            <div
+                class="history-list"
+                id="historyList"
+            ></div>
+
+        </section>
+
+    </section>
+
+</main>
+
+<script src="./script.js"></script>
+
+</body>
+
+</html>
