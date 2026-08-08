@@ -1,85 +1,31 @@
-const button =
-    document.getElementById(
-        "trainButton"
-    );
-
-const techniqueText =
-    document.getElementById(
-        "technique"
-    );
-
-const techniqueSide =
-    document.getElementById(
-        "techniqueSide"
-    );
-
-const pullCounter =
-    document.getElementById(
-        "pullCounter"
-    );
-
-const commitmentIndicator =
-    document.getElementById(
-        "commitmentIndicator"
-    );
-
-const historyList =
-    document.getElementById(
-        "historyList"
-    );
-
-const totalPullsElement =
-    document.getElementById(
-        "totalPulls"
-    );
-
-const insidePullsElement =
-    document.getElementById(
-        "insidePulls"
-    );
-
-const outsidePullsElement =
-    document.getElementById(
-        "outsidePulls"
-    );
-
-const averageCommitmentElement =
-    document.getElementById(
-        "averageCommitment"
-    );
-
-const clearHistoryButton =
-    document.getElementById(
-        "clearHistoryButton"
-    );
-
-const nodes =
-    Array.from(
-        document.querySelectorAll(
-            ".technique-node"
-        )
-    );
-
-
-let pulling =
-    false;
-
-
-let sessionHistory =
-    JSON.parse(
-        localStorage.getItem(
-            "armPyramidSession"
-        )
-    ) || [];
-
-
-let pullNumber =
-    sessionHistory.length + 1;
-
-
 /* =========================
-   FIXED COMMITMENT VALUES
+   TECHNIQUE DEFINITIONS
 ========================= */
+
+const techniqueOrder = [
+
+    "High Hook",
+
+    "Hook & Drag",
+
+    "Hook & Drive",
+
+    "Shoulder Press",
+
+    "Flop Press",
+
+    "Posting Toproll",
+
+    "Sweeping Toproll",
+
+    "Low-Hand Toproll",
+
+    "Open Toproll",
+
+    "King's Move"
+
+];
+
 
 const commitmentByTechnique = {
 
@@ -107,42 +53,346 @@ const commitmentByTechnique = {
 
 
 /* =========================
-   CLEAR NODES
+   DOM
 ========================= */
 
-function clearNodes() {
-
-    nodes.forEach(node => {
-
-        node.classList.remove(
-            "active",
-            "winner"
-        );
-
-    });
-
-}
+const button =
+    document.getElementById(
+        "trainButton"
+    );
 
 
-/* =========================
-   RANDOM NODE
-========================= */
+const techniqueText =
+    document.getElementById(
+        "technique"
+    );
 
-function getRandomNode() {
 
-    return nodes[
-        Math.floor(
-            Math.random()
-            *
-            nodes.length
+const techniqueSide =
+    document.getElementById(
+        "techniqueSide"
+    );
+
+
+const pullCounter =
+    document.getElementById(
+        "pullCounter"
+    );
+
+
+const sessionProgress =
+    document.getElementById(
+        "sessionProgress"
+    );
+
+
+const commitmentIndicator =
+    document.getElementById(
+        "commitmentIndicator"
+    );
+
+
+const historyList =
+    document.getElementById(
+        "historyList"
+    );
+
+
+const totalPullsElement =
+    document.getElementById(
+        "totalPulls"
+    );
+
+
+const insidePullsElement =
+    document.getElementById(
+        "insidePulls"
+    );
+
+
+const outsidePullsElement =
+    document.getElementById(
+        "outsidePulls"
+    );
+
+
+const averageCommitmentElement =
+    document.getElementById(
+        "averageCommitment"
+    );
+
+
+const clearHistoryButton =
+    document.getElementById(
+        "clearHistoryButton"
+    );
+
+
+const settingsToggle =
+    document.getElementById(
+        "settingsToggle"
+    );
+
+
+const settingsContent =
+    document.getElementById(
+        "settingsContent"
+    );
+
+
+const settingsChevron =
+    document.getElementById(
+        "settingsChevron"
+    );
+
+
+const settingsSummary =
+    document.getElementById(
+        "settingsSummary"
+    );
+
+
+const settingsWarning =
+    document.getElementById(
+        "settingsWarning"
+    );
+
+
+const avoidRepeatsToggle =
+    document.getElementById(
+        "avoidRepeatsToggle"
+    );
+
+
+const enableAllTechniques =
+    document.getElementById(
+        "enableAllTechniques"
+    );
+
+
+const disableAllTechniques =
+    document.getElementById(
+        "disableAllTechniques"
+    );
+
+
+const nodes =
+    Array.from(
+        document.querySelectorAll(
+            ".technique-node"
         )
-    ];
+    );
+
+
+const poolButtons =
+    Array.from(
+        document.querySelectorAll(
+            ".pool-option"
+        )
+    );
+
+
+const lengthButtons =
+    Array.from(
+        document.querySelectorAll(
+            ".length-option"
+        )
+    );
+
+
+const techniqueChips =
+    Array.from(
+        document.querySelectorAll(
+            ".technique-chip"
+        )
+    );
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+const defaultSettings = {
+
+    pool:
+        "all",
+
+    sessionLength:
+        10,
+
+    avoidRepeats:
+        true,
+
+    enabledTechniques:
+        [...techniqueOrder]
+
+};
+
+
+function loadSettings() {
+
+    try {
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    "armPyramidSettings"
+                )
+            );
+
+
+        if (!saved) {
+
+            return {
+                ...defaultSettings,
+                enabledTechniques:
+                    [...techniqueOrder]
+            };
+
+        }
+
+
+        return {
+
+            pool:
+                saved.pool ||
+                "all",
+
+            sessionLength:
+                saved.sessionLength ??
+                10,
+
+            avoidRepeats:
+                saved.avoidRepeats ??
+                true,
+
+            enabledTechniques:
+                Array.isArray(
+                    saved.enabledTechniques
+                )
+                ?
+                saved.enabledTechniques
+                .filter(
+                    technique =>
+                        techniqueOrder
+                        .includes(
+                            technique
+                        )
+                )
+                :
+                [...techniqueOrder]
+
+        };
+
+    }
+
+    catch {
+
+        return {
+
+            ...defaultSettings,
+
+            enabledTechniques:
+                [...techniqueOrder]
+
+        };
+
+    }
+
+}
+
+
+let settings =
+    loadSettings();
+
+
+function saveSettings() {
+
+    localStorage.setItem(
+
+        "armPyramidSettings",
+
+        JSON.stringify(
+            settings
+        )
+
+    );
 
 }
 
 
 /* =========================
-   WAIT
+   SESSION HISTORY
+========================= */
+
+let sessionHistory = [];
+
+
+try {
+
+    sessionHistory =
+        JSON.parse(
+            localStorage.getItem(
+                "armPyramidSession"
+            )
+        ) || [];
+
+}
+
+catch {
+
+    sessionHistory =
+        [];
+
+}
+
+
+/*
+    Normalize previous records.
+
+    This also fixes older pulls
+    created before commitments
+    became fixed.
+*/
+
+sessionHistory =
+    sessionHistory.map(
+        (pull, index) => {
+
+            const fixedCommitment =
+                commitmentByTechnique[
+                    pull.technique
+                ];
+
+
+            return {
+
+                ...pull,
+
+                number:
+                    index + 1,
+
+                commitment:
+                    fixedCommitment ??
+                    pull.commitment ??
+                    0
+
+            };
+
+        }
+    );
+
+
+let pulling =
+    false;
+
+
+let pullNumber =
+    sessionHistory.length + 1;
+
+
+/* =========================
+   UTILITIES
 ========================= */
 
 function wait(ms) {
@@ -161,11 +411,9 @@ function wait(ms) {
 }
 
 
-/* =========================
-   FORMAT COMMITMENT
-========================= */
-
-function formatCommitment(value) {
+function formatCommitment(
+    value
+) {
 
     if (
         value > 0
@@ -175,6 +423,7 @@ function formatCommitment(value) {
 
     }
 
+
     return String(
         value
     );
@@ -182,11 +431,145 @@ function formatCommitment(value) {
 }
 
 
+function randomItem(
+    array
+) {
+
+    return array[
+        Math.floor(
+            Math.random()
+            *
+            array.length
+        )
+    ];
+
+}
+
+
 /* =========================
-   COMMITMENT INDICATOR
+   CLEAR PYRAMID
 ========================= */
 
-function setCommitment(value) {
+function clearNodes() {
+
+    nodes.forEach(
+        node => {
+
+            node.classList.remove(
+                "active",
+                "winner"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   ELIGIBLE TECHNIQUES
+========================= */
+
+function getEligibleNodes() {
+
+    return nodes.filter(
+        node => {
+
+            const technique =
+                node.dataset.technique;
+
+
+            const side =
+                node.dataset.side;
+
+
+            const enabled =
+                settings
+                .enabledTechniques
+                .includes(
+                    technique
+                );
+
+
+            if (!enabled) {
+
+                return false;
+
+            }
+
+
+            if (
+                settings.pool ===
+                "inside"
+            ) {
+
+                return side ===
+                    "inside";
+
+            }
+
+
+            if (
+                settings.pool ===
+                "outside"
+            ) {
+
+                return side ===
+                    "outside";
+
+            }
+
+
+            return true;
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SESSION TARGET
+========================= */
+
+function isUnlimited() {
+
+    return (
+        settings.sessionLength ===
+        "unlimited"
+    );
+
+}
+
+
+function isSessionComplete() {
+
+    if (
+        isUnlimited()
+    ) {
+
+        return false;
+
+    }
+
+
+    return (
+        sessionHistory.length >=
+        Number(
+            settings.sessionLength
+        )
+    );
+
+}
+
+
+/* =========================
+   SHOULDER INDICATOR
+========================= */
+
+function setCommitment(
+    value
+) {
 
     const positions = {
 
@@ -262,17 +645,357 @@ function setCommitment(value) {
 
 
 /* =========================
-   STORAGE
+   SAVE SESSION
 ========================= */
 
 function saveSession() {
 
     localStorage.setItem(
+
         "armPyramidSession",
+
         JSON.stringify(
             sessionHistory
         )
+
     );
+
+}
+
+
+/* =========================
+   SESSION PROGRESS
+========================= */
+
+function updateSessionProgress() {
+
+    const current =
+        sessionHistory.length;
+
+
+    if (
+        isUnlimited()
+    ) {
+
+        sessionProgress.textContent =
+            `${current} / ∞`;
+
+    }
+
+    else {
+
+        sessionProgress.textContent =
+            `${current} / ${settings.sessionLength}`;
+
+    }
+
+
+    sessionProgress
+        .classList
+        .toggle(
+            "complete",
+            isSessionComplete()
+        );
+
+}
+
+
+/* =========================
+   BUTTON STATE
+========================= */
+
+function updatePullButton() {
+
+    const eligible =
+        getEligibleNodes();
+
+
+    button
+        .classList
+        .remove(
+            "session-complete"
+        );
+
+
+    if (
+        eligible.length ===
+        0
+    ) {
+
+        button.disabled =
+            true;
+
+
+        button.textContent =
+            "⚠ SELECT A TECHNIQUE";
+
+
+        return;
+
+    }
+
+
+    if (
+        isSessionComplete()
+    ) {
+
+        button.disabled =
+            true;
+
+
+        button
+            .classList
+            .add(
+                "session-complete"
+            );
+
+
+        button.textContent =
+            "✓ SESSION COMPLETE";
+
+
+        return;
+
+    }
+
+
+    if (
+        pulling
+    ) {
+
+        button.disabled =
+            true;
+
+
+        button.textContent =
+            "PULLING...";
+
+
+        return;
+
+    }
+
+
+    button.disabled =
+        false;
+
+
+    if (
+        sessionHistory.length ===
+        0
+    ) {
+
+        button.innerHTML =
+            "⚡ START PULL";
+
+    }
+
+    else {
+
+        button.innerHTML =
+            "↻ PULL AGAIN";
+
+    }
+
+}
+
+
+/* =========================
+   SETTINGS UI
+========================= */
+
+function updateSettingsUI() {
+
+    poolButtons.forEach(
+        poolButton => {
+
+            poolButton
+                .classList
+                .toggle(
+                    "active",
+                    poolButton
+                    .dataset
+                    .pool ===
+                    settings.pool
+                );
+
+        }
+    );
+
+
+    lengthButtons.forEach(
+        lengthButton => {
+
+            const value =
+                lengthButton
+                .dataset
+                .length;
+
+
+            const matches =
+                value ===
+                String(
+                    settings
+                    .sessionLength
+                );
+
+
+            lengthButton
+                .classList
+                .toggle(
+                    "active",
+                    matches
+                );
+
+        }
+    );
+
+
+    avoidRepeatsToggle.checked =
+        settings.avoidRepeats;
+
+
+    techniqueChips.forEach(
+        chip => {
+
+            const technique =
+                chip
+                .dataset
+                .filterTechnique;
+
+
+            const side =
+                chip
+                .dataset
+                .filterSide;
+
+
+            const selected =
+                settings
+                .enabledTechniques
+                .includes(
+                    technique
+                );
+
+
+            chip
+                .classList
+                .toggle(
+                    "selected",
+                    selected
+                );
+
+
+            let outsidePool =
+                false;
+
+
+            if (
+                settings.pool ===
+                "inside"
+            ) {
+
+                outsidePool =
+                    side !==
+                    "inside";
+
+            }
+
+
+            if (
+                settings.pool ===
+                "outside"
+            ) {
+
+                outsidePool =
+                    side !==
+                    "outside";
+
+            }
+
+
+            chip
+                .classList
+                .toggle(
+                    "pool-muted",
+                    outsidePool
+                );
+
+        }
+    );
+
+
+    nodes.forEach(
+        node => {
+
+            const technique =
+                node.dataset.technique;
+
+
+            const eligible =
+                getEligibleNodes()
+                .includes(
+                    node
+                );
+
+
+            node
+                .classList
+                .toggle(
+                    "filtered-out",
+                    !eligible
+                );
+
+        }
+    );
+
+
+    const poolName = {
+
+        all:
+            "ALL",
+
+        inside:
+            "INSIDE",
+
+        outside:
+            "OUTSIDE"
+
+    }[
+        settings.pool
+    ];
+
+
+    const sessionName =
+        isUnlimited()
+        ?
+        "UNLIMITED"
+        :
+        `${settings.sessionLength} PULLS`;
+
+
+    settingsSummary.textContent =
+        `${poolName} • ${sessionName}`;
+
+
+    const noEligible =
+        getEligibleNodes()
+        .length ===
+        0;
+
+
+    settingsWarning
+        .classList
+        .toggle(
+            "hidden",
+            !noEligible
+        );
+
+
+    updateSessionProgress();
+
+
+    updatePullButton();
 
 }
 
@@ -325,7 +1048,8 @@ function updateStats() {
 
 
         average =
-            sum / total;
+            sum /
+            total;
 
     }
 
@@ -345,29 +1069,13 @@ function updateStats() {
         outside;
 
 
-    if (
+    averageCommitmentElement
+        .textContent =
         average > 0
-    ) {
-
-        averageCommitmentElement
-            .textContent =
-            "+"
-            +
-            average.toFixed(
-                1
-            );
-
-    }
-
-    else {
-
-        averageCommitmentElement
-            .textContent =
-            average.toFixed(
-                1
-            );
-
-    }
+        ?
+        `+${average.toFixed(1)}`
+        :
+        average.toFixed(1);
 
 }
 
@@ -399,6 +1107,10 @@ function renderHistory() {
 
         updateStats();
 
+        updateSessionProgress();
+
+        updatePullButton();
+
 
         return;
 
@@ -418,111 +1130,117 @@ function renderHistory() {
 
     historyList.innerHTML =
         recentPulls
-        .map(pull => {
+        .map(
+            pull => {
 
-            let commitmentClass =
-                "neutral";
+                let commitmentClass =
+                    "neutral";
 
 
-            if (
-                pull.commitment > 0
-            ) {
+                if (
+                    pull.commitment > 0
+                ) {
 
-                commitmentClass =
-                    "positive";
+                    commitmentClass =
+                        "positive";
+
+                }
+
+
+                if (
+                    pull.commitment < 0
+                ) {
+
+                    commitmentClass =
+                        "negative";
+
+                }
+
+
+                return `
+
+                    <div class="history-item">
+
+                        <div class="history-number">
+
+                            #${String(
+                                pull.number
+                            ).padStart(
+                                2,
+                                "0"
+                            )}
+
+                        </div>
+
+
+                        <div class="history-technique">
+
+                            <strong>
+                                ${pull.technique}
+                            </strong>
+
+                            <span>
+
+                                ${
+                                    pull.side ===
+                                    "inside"
+                                    ?
+                                    "INSIDE GAME"
+                                    :
+                                    "OUTSIDE GAME"
+                                }
+
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="
+                                history-code
+                                ${pull.side}
+                            "
+                        >
+
+                            ${pull.code}
+
+                        </div>
+
+
+                        <div
+                            class="
+                                history-commitment
+                                ${commitmentClass}
+                            "
+                        >
+
+                            SHOULDER
+                            ${formatCommitment(
+                                pull.commitment
+                            )}
+
+                        </div>
+
+                    </div>
+
+                `;
 
             }
-
-
-            if (
-                pull.commitment < 0
-            ) {
-
-                commitmentClass =
-                    "negative";
-
-            }
-
-
-            return `
-
-                <div class="history-item">
-
-                    <div class="history-number">
-
-                        #${String(
-                            pull.number
-                        ).padStart(
-                            2,
-                            "0"
-                        )}
-
-                    </div>
-
-
-                    <div class="history-technique">
-
-                        <strong>
-                            ${pull.technique}
-                        </strong>
-
-                        <span>
-
-                            ${
-                                pull.side ===
-                                "inside"
-                                ?
-                                "INSIDE GAME"
-                                :
-                                "OUTSIDE GAME"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-                    <div
-                        class="
-                            history-code
-                            ${pull.side}
-                        "
-                    >
-
-                        ${pull.code}
-
-                    </div>
-
-
-                    <div
-                        class="
-                            history-commitment
-                            ${commitmentClass}
-                        "
-                    >
-
-                        SHOULDER
-                        ${formatCommitment(
-                            pull.commitment
-                        )}
-
-                    </div>
-
-                </div>
-
-            `;
-
-        })
+        )
         .join("");
 
 
     updateStats();
 
+    updateSessionProgress();
+
+    updatePullButton();
+
 }
 
 
 /* =========================
-   ADD HISTORY
+   ADD PULL
 ========================= */
 
 function addPullToHistory(
@@ -570,14 +1288,109 @@ function addPullToHistory(
 
 
 /* =========================
+   FINAL WINNER
+========================= */
+
+function getFinalWinner(
+    eligibleNodes
+) {
+
+    if (
+        !settings
+        .avoidRepeats
+    ) {
+
+        return randomItem(
+            eligibleNodes
+        );
+
+    }
+
+
+    if (
+        eligibleNodes.length <=
+        1
+    ) {
+
+        return eligibleNodes[
+            0
+        ];
+
+    }
+
+
+    const lastPull =
+        sessionHistory[
+            sessionHistory.length -
+            1
+        ];
+
+
+    if (
+        !lastPull
+    ) {
+
+        return randomItem(
+            eligibleNodes
+        );
+
+    }
+
+
+    const candidates =
+        eligibleNodes.filter(
+            node =>
+                node.dataset
+                .technique !==
+                lastPull.technique
+        );
+
+
+    if (
+        candidates.length ===
+        0
+    ) {
+
+        return randomItem(
+            eligibleNodes
+        );
+
+    }
+
+
+    return randomItem(
+        candidates
+    );
+
+}
+
+
+/* =========================
    START PULL
 ========================= */
 
 async function startPull() {
 
     if (
-        pulling
+        pulling ||
+        isSessionComplete()
     ) {
+
+        return;
+
+    }
+
+
+    const eligibleNodes =
+        getEligibleNodes();
+
+
+    if (
+        eligibleNodes.length ===
+        0
+    ) {
+
+        updateSettingsUI();
 
         return;
 
@@ -588,19 +1401,16 @@ async function startPull() {
         true;
 
 
-    button.disabled =
-        true;
+    updatePullButton();
 
 
-    button.textContent =
+    techniqueText
+        .textContent =
         "PULLING...";
 
 
-    techniqueText.textContent =
-        "PULLING...";
-
-
-    techniqueSide.textContent =
+    techniqueSide
+        .textContent =
         "READING THE TABLE";
 
 
@@ -654,19 +1464,30 @@ async function startPull() {
         of rouletteSpeeds
     ) {
 
-        let currentNode =
-            getRandomNode();
+        let availableFlashNodes =
+            eligibleNodes;
 
 
-        while (
-            currentNode ===
+        if (
+            eligibleNodes.length >
+            1 &&
             previousNode
         ) {
 
-            currentNode =
-                getRandomNode();
+            availableFlashNodes =
+                eligibleNodes.filter(
+                    node =>
+                        node !==
+                        previousNode
+                );
 
         }
+
+
+        const currentNode =
+            randomItem(
+                availableFlashNodes
+            );
 
 
         clearNodes();
@@ -694,7 +1515,9 @@ async function startPull() {
 
 
     const winner =
-        getRandomNode();
+        getFinalWinner(
+            eligibleNodes
+        );
 
 
     winner
@@ -707,20 +1530,20 @@ async function startPull() {
 
     const techniqueName =
         winner
-        .dataset
-        .technique;
+            .dataset
+            .technique;
 
 
     const techniqueCode =
         winner
-        .dataset
-        .code;
+            .dataset
+            .code;
 
 
     const side =
         winner
-        .dataset
-        .side;
+            .dataset
+            .side;
 
 
     const commitment =
@@ -729,12 +1552,14 @@ async function startPull() {
         ];
 
 
-    techniqueText.textContent =
+    techniqueText
+        .textContent =
         techniqueName
         .toUpperCase();
 
 
-    techniqueSide.textContent =
+    techniqueSide
+        .textContent =
         `${
             side ===
             "inside"
@@ -755,7 +1580,8 @@ async function startPull() {
     );
 
 
-    pullCounter.textContent =
+    pullCounter
+        .textContent =
         `PULL #${String(
             pullNumber
         ).padStart(
@@ -765,26 +1591,26 @@ async function startPull() {
 
 
     addPullToHistory(
+
         techniqueName,
+
         techniqueCode,
+
         side,
+
         commitment
+
     );
 
 
     pullNumber++;
 
 
-    button.innerHTML =
-        "↻ PULL AGAIN";
-
-
-    button.disabled =
-        false;
-
-
     pulling =
         false;
+
+
+    updatePullButton();
 
 }
 
@@ -831,35 +1657,297 @@ function clearSession() {
     );
 
 
-    techniqueText.textContent =
+    techniqueText
+        .textContent =
         "READY?";
 
 
-    techniqueSide.textContent =
+    techniqueSide
+        .textContent =
         "PRESS START TO BEGIN";
 
 
-    pullCounter.textContent =
+    pullCounter
+        .textContent =
         "PULL #01";
 
 
-    button.innerHTML =
-        "⚡ START PULL";
-
-
     renderHistory();
+
+
+    updateSettingsUI();
 
 }
 
 
 /* =========================
-   EVENTS
+   SETTINGS EVENTS
 ========================= */
 
-button.addEventListener(
-    "click",
-    startPull
+settingsToggle
+    .addEventListener(
+        "click",
+        () => {
+
+            const collapsed =
+                settingsContent
+                .classList
+                .toggle(
+                    "collapsed"
+                );
+
+
+            settingsChevron
+                .textContent =
+                collapsed
+                ?
+                "+"
+                :
+                "−";
+
+        }
+    );
+
+
+poolButtons.forEach(
+    poolButton => {
+
+        poolButton
+            .addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        pulling
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    settings.pool =
+                        poolButton
+                        .dataset
+                        .pool;
+
+
+                    saveSettings();
+
+
+                    updateSettingsUI();
+
+                }
+            );
+
+    }
 );
+
+
+lengthButtons.forEach(
+    lengthButton => {
+
+        lengthButton
+            .addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        pulling
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const value =
+                        lengthButton
+                        .dataset
+                        .length;
+
+
+                    settings
+                        .sessionLength =
+                        value ===
+                        "unlimited"
+                        ?
+                        "unlimited"
+                        :
+                        Number(
+                            value
+                        );
+
+
+                    saveSettings();
+
+
+                    updateSettingsUI();
+
+                }
+            );
+
+    }
+);
+
+
+avoidRepeatsToggle
+    .addEventListener(
+        "change",
+        () => {
+
+            settings
+                .avoidRepeats =
+                avoidRepeatsToggle
+                .checked;
+
+
+            saveSettings();
+
+
+            updateSettingsUI();
+
+        }
+    );
+
+
+techniqueChips.forEach(
+    chip => {
+
+        chip
+            .addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        pulling
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const technique =
+                        chip
+                        .dataset
+                        .filterTechnique;
+
+
+                    const enabled =
+                        settings
+                        .enabledTechniques
+                        .includes(
+                            technique
+                        );
+
+
+                    if (
+                        enabled
+                    ) {
+
+                        settings
+                            .enabledTechniques =
+                            settings
+                            .enabledTechniques
+                            .filter(
+                                item =>
+                                    item !==
+                                    technique
+                            );
+
+                    }
+
+                    else {
+
+                        settings
+                            .enabledTechniques
+                            .push(
+                                technique
+                            );
+
+                    }
+
+
+                    saveSettings();
+
+
+                    updateSettingsUI();
+
+                }
+            );
+
+    }
+);
+
+
+enableAllTechniques
+    .addEventListener(
+        "click",
+        () => {
+
+            if (
+                pulling
+            ) {
+
+                return;
+
+            }
+
+
+            settings
+                .enabledTechniques =
+                [
+                    ...techniqueOrder
+                ];
+
+
+            saveSettings();
+
+
+            updateSettingsUI();
+
+        }
+    );
+
+
+disableAllTechniques
+    .addEventListener(
+        "click",
+        () => {
+
+            if (
+                pulling
+            ) {
+
+                return;
+
+            }
+
+
+            settings
+                .enabledTechniques =
+                [];
+
+
+            saveSettings();
+
+
+            updateSettingsUI();
+
+        }
+    );
+
+
+/* =========================
+   MAIN EVENTS
+========================= */
+
+button
+    .addEventListener(
+        "click",
+        startPull
+    );
 
 
 clearHistoryButton
@@ -870,13 +1958,20 @@ clearHistoryButton
 
 
 /* =========================
-   INITIAL LOAD
+   INITIALIZE
 ========================= */
+
+saveSession();
+
 
 renderHistory();
 
 
-pullCounter.textContent =
+updateSettingsUI();
+
+
+pullCounter
+    .textContent =
     `PULL #${String(
         pullNumber
     ).padStart(
@@ -886,7 +1981,7 @@ pullCounter.textContent =
 
 
 /* =========================
-   PWA SERVICE WORKER
+   SERVICE WORKER
 ========================= */
 
 if (
@@ -894,37 +1989,38 @@ if (
     in navigator
 ) {
 
-    window.addEventListener(
-        "load",
-        () => {
+    window
+        .addEventListener(
+            "load",
+            () => {
 
-            navigator
-                .serviceWorker
-                .register(
-                    "./service-worker.js"
-                )
-                .then(
-                    registration => {
+                navigator
+                    .serviceWorker
+                    .register(
+                        "./service-worker.js"
+                    )
+                    .then(
+                        registration => {
 
-                        console.log(
-                            "Arm Pyramid PWA ready",
-                            registration
-                        );
+                            console.log(
+                                "Arm Pyramid PWA ready",
+                                registration
+                            );
 
-                    }
-                )
-                .catch(
-                    error => {
+                        }
+                    )
+                    .catch(
+                        error => {
 
-                        console.error(
-                            "Service Worker error:",
-                            error
-                        );
+                            console.error(
+                                "Service Worker error:",
+                                error
+                            );
 
-                    }
-                );
+                        }
+                    );
 
-        }
-    );
+            }
+        );
 
 }

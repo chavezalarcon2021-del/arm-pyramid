@@ -48,13 +48,16 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=5"
+        href="./style.css?v=6"
     >
+
 </head>
 
 <body>
 
 <main class="app-shell">
+
+    <!-- HEADER -->
 
     <header class="hero">
 
@@ -73,6 +76,8 @@
     </header>
 
 
+    <!-- MODES -->
+
     <div class="mode-tabs">
 
         <button class="mode-tab active">
@@ -86,6 +91,8 @@
 
     </div>
 
+
+    <!-- PRACTICE PANEL -->
 
     <section class="practice-panel">
 
@@ -115,6 +122,332 @@
         </div>
 
 
+        <!-- PRACTICE SETTINGS -->
+
+        <section class="settings-card">
+
+            <button
+                class="settings-header"
+                id="settingsToggle"
+                type="button"
+            >
+
+                <div class="settings-header-left">
+
+                    <span class="settings-icon">
+                        ⚙
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            PRACTICE SETTINGS
+                        </strong>
+
+                        <span id="settingsSummary">
+                            ALL • 10 PULLS
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <span
+                    class="settings-chevron"
+                    id="settingsChevron"
+                >
+                    −
+                </span>
+
+            </button>
+
+
+            <div
+                class="settings-content"
+                id="settingsContent"
+            >
+
+                <!-- PULL POOL -->
+
+                <div class="setting-block">
+
+                    <div class="setting-label">
+                        PULL POOL
+                    </div>
+
+
+                    <div class="segmented-control">
+
+                        <button
+                            class="setting-option pool-option active"
+                            data-pool="all"
+                            type="button"
+                        >
+                            ALL
+                        </button>
+
+                        <button
+                            class="setting-option pool-option"
+                            data-pool="inside"
+                            type="button"
+                        >
+                            INSIDE
+                        </button>
+
+                        <button
+                            class="setting-option pool-option"
+                            data-pool="outside"
+                            type="button"
+                        >
+                            OUTSIDE
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SESSION LENGTH -->
+
+                <div class="setting-block">
+
+                    <div class="setting-label">
+                        SESSION LENGTH
+                    </div>
+
+
+                    <div class="segmented-control session-control">
+
+                        <button
+                            class="setting-option length-option active"
+                            data-length="10"
+                            type="button"
+                        >
+                            10
+                        </button>
+
+                        <button
+                            class="setting-option length-option"
+                            data-length="20"
+                            type="button"
+                        >
+                            20
+                        </button>
+
+                        <button
+                            class="setting-option length-option"
+                            data-length="30"
+                            type="button"
+                        >
+                            30
+                        </button>
+
+                        <button
+                            class="setting-option length-option"
+                            data-length="unlimited"
+                            type="button"
+                        >
+                            ∞
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REPEAT -->
+
+                <div class="repeat-row">
+
+                    <div>
+
+                        <strong>
+                            AVOID CONSECUTIVE REPEATS
+                        </strong>
+
+                        <span>
+                            The same technique won't appear twice in a row.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="avoidRepeatsToggle"
+                            checked
+                        >
+
+                        <span class="switch-slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- TECHNIQUES -->
+
+                <div class="technique-filter">
+
+                    <div class="technique-filter-header">
+
+                        <div class="setting-label">
+                            TECHNIQUES
+                        </div>
+
+
+                        <div class="filter-actions">
+
+                            <button
+                                id="enableAllTechniques"
+                                type="button"
+                            >
+                                ALL
+                            </button>
+
+                            <button
+                                id="disableAllTechniques"
+                                type="button"
+                            >
+                                NONE
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="technique-chip-grid">
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="High Hook"
+                            data-filter-side="inside"
+                            type="button"
+                        >
+                            <strong>H1</strong>
+                            <span>High Hook</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Hook & Drag"
+                            data-filter-side="inside"
+                            type="button"
+                        >
+                            <strong>H2</strong>
+                            <span>Hook & Drag</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Hook & Drive"
+                            data-filter-side="inside"
+                            type="button"
+                        >
+                            <strong>H3</strong>
+                            <span>Hook & Drive</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Shoulder Press"
+                            data-filter-side="inside"
+                            type="button"
+                        >
+                            <strong>P1</strong>
+                            <span>Shoulder Press</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Flop Press"
+                            data-filter-side="inside"
+                            type="button"
+                        >
+                            <strong>P2</strong>
+                            <span>Flop Press</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Posting Toproll"
+                            data-filter-side="outside"
+                            type="button"
+                        >
+                            <strong>T1</strong>
+                            <span>Posting</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Sweeping Toproll"
+                            data-filter-side="outside"
+                            type="button"
+                        >
+                            <strong>T2</strong>
+                            <span>Sweeping</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Low-Hand Toproll"
+                            data-filter-side="outside"
+                            type="button"
+                        >
+                            <strong>T3</strong>
+                            <span>Low-Hand</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="Open Toproll"
+                            data-filter-side="outside"
+                            type="button"
+                        >
+                            <strong>T4</strong>
+                            <span>Open Toproll</span>
+                        </button>
+
+
+                        <button
+                            class="technique-chip selected"
+                            data-filter-technique="King's Move"
+                            data-filter-side="outside"
+                            type="button"
+                        >
+                            <strong>KM</strong>
+                            <span>King's Move</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="settings-warning hidden"
+                    id="settingsWarning"
+                >
+                    ⚠ Select at least one technique available in the current pool.
+                </div>
+
+            </div>
+
+        </section>
+
+
         <!-- PYRAMID -->
 
         <div class="pyramid-zone">
@@ -136,6 +469,8 @@
             </svg>
 
 
+            <!-- H1 -->
+
             <div
                 class="technique-node apex"
                 data-technique="High Hook"
@@ -155,6 +490,8 @@
 
             </div>
 
+
+            <!-- H2 -->
 
             <div
                 class="technique-node h2"
@@ -180,6 +517,8 @@
             </div>
 
 
+            <!-- H3 -->
+
             <div
                 class="technique-node h3"
                 data-technique="Hook & Drive"
@@ -203,6 +542,8 @@
 
             </div>
 
+
+            <!-- P1 -->
 
             <div
                 class="technique-node p1"
@@ -228,6 +569,8 @@
             </div>
 
 
+            <!-- P2 -->
+
             <div
                 class="technique-node p2"
                 data-technique="Flop Press"
@@ -251,6 +594,8 @@
 
             </div>
 
+
+            <!-- T1 -->
 
             <div
                 class="technique-node t1"
@@ -276,6 +621,8 @@
             </div>
 
 
+            <!-- T2 -->
+
             <div
                 class="technique-node t2"
                 data-technique="Sweeping Toproll"
@@ -299,6 +646,8 @@
 
             </div>
 
+
+            <!-- T3 -->
 
             <div
                 class="technique-node t3"
@@ -324,6 +673,8 @@
             </div>
 
 
+            <!-- T4 -->
+
             <div
                 class="technique-node t4"
                 data-technique="Open Toproll"
@@ -347,6 +698,8 @@
 
             </div>
 
+
+            <!-- KM -->
 
             <div
                 class="technique-node km"
@@ -397,6 +750,10 @@
                     PULL #01
                 </div>
 
+                <div id="sessionProgress">
+                    0 / 10
+                </div>
+
             </div>
 
 
@@ -418,12 +775,14 @@
         </div>
 
 
+        <!-- START BUTTON -->
+
         <button id="trainButton">
             ⚡ START PULL
         </button>
 
 
-        <!-- COMMITMENT -->
+        <!-- SHOULDER COMMITMENT -->
 
         <div class="commitment-card">
 
@@ -519,7 +878,7 @@
         </div>
 
 
-        <!-- HISTORY -->
+        <!-- SESSION HISTORY -->
 
         <section class="history-section">
 
@@ -538,7 +897,10 @@
                 </div>
 
 
-                <button id="clearHistoryButton">
+                <button
+                    id="clearHistoryButton"
+                    type="button"
+                >
                     CLEAR SESSION
                 </button>
 
@@ -613,7 +975,7 @@
 </main>
 
 
-<script src="./script.js?v=5"></script>
+<script src="./script.js?v=6"></script>
 
 </body>
 
