@@ -1,63 +1,84 @@
 const button =
-    document.getElementById("trainButton");
+    document.getElementById(
+        "trainButton"
+    );
 
 const techniqueText =
-    document.getElementById("technique");
+    document.getElementById(
+        "technique"
+    );
 
 const techniqueSide =
-    document.getElementById("techniqueSide");
+    document.getElementById(
+        "techniqueSide"
+    );
 
 const pullCounter =
-    document.getElementById("pullCounter");
+    document.getElementById(
+        "pullCounter"
+    );
 
 const commitmentIndicator =
-    document.getElementById("commitmentIndicator");
+    document.getElementById(
+        "commitmentIndicator"
+    );
 
 const historyList =
-    document.getElementById("historyList");
+    document.getElementById(
+        "historyList"
+    );
 
 const totalPullsElement =
-    document.getElementById("totalPulls");
+    document.getElementById(
+        "totalPulls"
+    );
 
 const insidePullsElement =
-    document.getElementById("insidePulls");
+    document.getElementById(
+        "insidePulls"
+    );
 
 const outsidePullsElement =
-    document.getElementById("outsidePulls");
+    document.getElementById(
+        "outsidePulls"
+    );
 
 const averageCommitmentElement =
-    document.getElementById("averageCommitment");
+    document.getElementById(
+        "averageCommitment"
+    );
 
 const clearHistoryButton =
-    document.getElementById("clearHistoryButton");
+    document.getElementById(
+        "clearHistoryButton"
+    );
 
 const nodes =
     Array.from(
-        document.querySelectorAll(".technique-node")
+        document.querySelectorAll(
+            ".technique-node"
+        )
     );
 
 
-/* =========================
-   SESSION
-========================= */
+let pulling =
+    false;
 
-let pulling = false;
 
 let sessionHistory =
     JSON.parse(
-        localStorage.getItem("armPyramidSession")
+        localStorage.getItem(
+            "armPyramidSession"
+        )
     ) || [];
+
 
 let pullNumber =
     sessionHistory.length + 1;
 
 
 /* =========================
-   FIXED SHOULDER COMMITMENT
-
-   +3 = Maximum shoulder commitment
-    0 = Neutral
-   -3 = Maximum toproll commitment
+   FIXED COMMITMENT VALUES
 ========================= */
 
 const commitmentByTechnique = {
@@ -86,7 +107,7 @@ const commitmentByTechnique = {
 
 
 /* =========================
-   CLEAR PYRAMID
+   CLEAR NODES
 ========================= */
 
 function clearNodes() {
@@ -104,17 +125,18 @@ function clearNodes() {
 
 
 /* =========================
-   RANDOM TECHNIQUE
+   RANDOM NODE
 ========================= */
 
 function getRandomNode() {
 
-    const randomIndex =
+    return nodes[
         Math.floor(
-            Math.random() * nodes.length
-        );
-
-    return nodes[randomIndex];
+            Math.random()
+            *
+            nodes.length
+        )
+    ];
 
 }
 
@@ -125,14 +147,16 @@ function getRandomNode() {
 
 function wait(ms) {
 
-    return new Promise(resolve => {
+    return new Promise(
+        resolve => {
 
-        setTimeout(
-            resolve,
-            ms
-        );
+            setTimeout(
+                resolve,
+                ms
+            );
 
-    });
+        }
+    );
 
 }
 
@@ -143,19 +167,23 @@ function wait(ms) {
 
 function formatCommitment(value) {
 
-    if (value > 0) {
+    if (
+        value > 0
+    ) {
 
         return `+${value}`;
 
     }
 
-    return String(value);
+    return String(
+        value
+    );
 
 }
 
 
 /* =========================
-   SHOULDER INDICATOR
+   COMMITMENT INDICATOR
 ========================= */
 
 function setCommitment(value) {
@@ -179,30 +207,44 @@ function setCommitment(value) {
     };
 
 
-    commitmentIndicator.style.left =
-        positions[value] + "%";
+    commitmentIndicator
+        .style
+        .left =
+        positions[value]
+        +
+        "%";
 
 
-    commitmentIndicator.classList.remove(
-        "inside",
-        "outside",
-        "neutral"
-    );
+    commitmentIndicator
+        .classList
+        .remove(
+            "inside",
+            "outside",
+            "neutral"
+        );
 
 
-    if (value > 0) {
+    if (
+        value > 0
+    ) {
 
         commitmentIndicator
             .classList
-            .add("inside");
+            .add(
+                "inside"
+            );
 
     }
 
-    else if (value < 0) {
+    else if (
+        value < 0
+    ) {
 
         commitmentIndicator
             .classList
-            .add("outside");
+            .add(
+                "outside"
+            );
 
     }
 
@@ -210,7 +252,9 @@ function setCommitment(value) {
 
         commitmentIndicator
             .classList
-            .add("neutral");
+            .add(
+                "neutral"
+            );
 
     }
 
@@ -218,21 +262,23 @@ function setCommitment(value) {
 
 
 /* =========================
-   SAVE SESSION
+   STORAGE
 ========================= */
 
 function saveSession() {
 
     localStorage.setItem(
         "armPyramidSession",
-        JSON.stringify(sessionHistory)
+        JSON.stringify(
+            sessionHistory
+        )
     );
 
 }
 
 
 /* =========================
-   UPDATE STATISTICS
+   STATS
 ========================= */
 
 function updateStats() {
@@ -244,21 +290,26 @@ function updateStats() {
     const inside =
         sessionHistory.filter(
             pull =>
-                pull.side === "inside"
+                pull.side ===
+                "inside"
         ).length;
 
 
     const outside =
         sessionHistory.filter(
             pull =>
-                pull.side === "outside"
+                pull.side ===
+                "outside"
         ).length;
 
 
-    let average = 0;
+    let average =
+        0;
 
 
-    if (total > 0) {
+    if (
+        total > 0
+    ) {
 
         const sum =
             sessionHistory.reduce(
@@ -266,7 +317,8 @@ function updateStats() {
                     currentTotal,
                     pull
                 ) =>
-                    currentTotal +
+                    currentTotal
+                    +
                     pull.commitment,
                 0
             );
@@ -278,30 +330,42 @@ function updateStats() {
     }
 
 
-    totalPullsElement.textContent =
+    totalPullsElement
+        .textContent =
         total;
 
 
-    insidePullsElement.textContent =
+    insidePullsElement
+        .textContent =
         inside;
 
 
-    outsidePullsElement.textContent =
+    outsidePullsElement
+        .textContent =
         outside;
 
 
-    if (average > 0) {
+    if (
+        average > 0
+    ) {
 
-        averageCommitmentElement.textContent =
-            "+" +
-            average.toFixed(1);
+        averageCommitmentElement
+            .textContent =
+            "+"
+            +
+            average.toFixed(
+                1
+            );
 
     }
 
     else {
 
-        averageCommitmentElement.textContent =
-            average.toFixed(1);
+        averageCommitmentElement
+            .textContent =
+            average.toFixed(
+                1
+            );
 
     }
 
@@ -309,12 +373,15 @@ function updateStats() {
 
 
 /* =========================
-   RENDER HISTORY
+   HISTORY
 ========================= */
 
 function renderHistory() {
 
-    if (sessionHistory.length === 0) {
+    if (
+        sessionHistory.length ===
+        0
+    ) {
 
         historyList.innerHTML = `
 
@@ -332,15 +399,21 @@ function renderHistory() {
 
         updateStats();
 
+
         return;
 
     }
 
 
     const recentPulls =
-        [...sessionHistory]
+        [
+            ...sessionHistory
+        ]
         .reverse()
-        .slice(0, 10);
+        .slice(
+            0,
+            10
+        );
 
 
     historyList.innerHTML =
@@ -351,7 +424,9 @@ function renderHistory() {
                 "neutral";
 
 
-            if (pull.commitment > 0) {
+            if (
+                pull.commitment > 0
+            ) {
 
                 commitmentClass =
                     "positive";
@@ -359,7 +434,9 @@ function renderHistory() {
             }
 
 
-            if (pull.commitment < 0) {
+            if (
+                pull.commitment < 0
+            ) {
 
                 commitmentClass =
                     "negative";
@@ -392,9 +469,12 @@ function renderHistory() {
                         <span>
 
                             ${
-                                pull.side === "inside"
-                                ? "INSIDE GAME"
-                                : "OUTSIDE GAME"
+                                pull.side ===
+                                "inside"
+                                ?
+                                "INSIDE GAME"
+                                :
+                                "OUTSIDE GAME"
                             }
 
                         </span>
@@ -442,7 +522,7 @@ function renderHistory() {
 
 
 /* =========================
-   ADD PULL TO HISTORY
+   ADD HISTORY
 ========================= */
 
 function addPullToHistory(
@@ -470,7 +550,8 @@ function addPullToHistory(
             commitment,
 
         date:
-            new Date().toISOString()
+            new Date()
+            .toISOString()
 
     };
 
@@ -489,19 +570,22 @@ function addPullToHistory(
 
 
 /* =========================
-   PRACTICE PULL
+   START PULL
 ========================= */
 
 async function startPull() {
 
-    if (pulling) {
+    if (
+        pulling
+    ) {
 
         return;
 
     }
 
 
-    pulling = true;
+    pulling =
+        true;
 
 
     button.disabled =
@@ -523,33 +607,39 @@ async function startPull() {
     clearNodes();
 
 
-    /*
-        Reset shoulder indicator
-        before roulette
-    */
+    setCommitment(
+        0
+    );
 
-    setCommitment(0);
-
-
-    /* =========================
-       ROULETTE ANIMATION
-    ========================= */
 
     const rouletteSpeeds = [
 
         55,
+
         60,
+
         65,
+
         70,
+
         80,
+
         90,
+
         105,
+
         120,
+
         140,
+
         165,
+
         190,
+
         225,
+
         270,
+
         330
 
     ];
@@ -568,11 +658,6 @@ async function startPull() {
             getRandomNode();
 
 
-        /*
-            Prevent same node from
-            flashing twice in a row
-        */
-
         while (
             currentNode ===
             previousNode
@@ -589,7 +674,9 @@ async function startPull() {
 
         currentNode
             .classList
-            .add("active");
+            .add(
+                "active"
+            );
 
 
         previousNode =
@@ -602,10 +689,6 @@ async function startPull() {
 
     }
 
-
-    /* =========================
-       FINAL WINNER
-    ========================= */
 
     clearNodes();
 
@@ -623,33 +706,28 @@ async function startPull() {
 
 
     const techniqueName =
-        winner.dataset.technique;
+        winner
+        .dataset
+        .technique;
 
 
     const techniqueCode =
-        winner.dataset.code;
+        winner
+        .dataset
+        .code;
 
 
     const side =
-        winner.dataset.side;
+        winner
+        .dataset
+        .side;
 
-
-    /* =========================
-       FIXED COMMITMENT
-
-       IMPORTANT:
-       There is NO randomness here.
-    ========================= */
 
     const commitment =
         commitmentByTechnique[
             techniqueName
         ];
 
-
-    /* =========================
-       DISPLAY RESULT
-    ========================= */
 
     techniqueText.textContent =
         techniqueName
@@ -658,15 +736,14 @@ async function startPull() {
 
     techniqueSide.textContent =
         `${
-            side === "inside"
-            ? "INSIDE GAME"
-            : "OUTSIDE GAME"
+            side ===
+            "inside"
+            ?
+            "INSIDE GAME"
+            :
+            "OUTSIDE GAME"
         } • SHOULDER ${formatCommitment(commitment)}`;
 
-
-    /* =========================
-       MOVE SHOULDER INDICATOR
-    ========================= */
 
     await wait(
         250
@@ -678,10 +755,6 @@ async function startPull() {
     );
 
 
-    /* =========================
-       PULL NUMBER
-    ========================= */
-
     pullCounter.textContent =
         `PULL #${String(
             pullNumber
@@ -690,10 +763,6 @@ async function startPull() {
             "0"
         )}`;
 
-
-    /* =========================
-       SAVE RESULT
-    ========================= */
 
     addPullToHistory(
         techniqueName,
@@ -705,10 +774,6 @@ async function startPull() {
 
     pullNumber++;
 
-
-    /* =========================
-       RESET BUTTON
-    ========================= */
 
     button.innerHTML =
         "↻ PULL AGAIN";
@@ -736,7 +801,9 @@ function clearSession() {
         );
 
 
-    if (!confirmed) {
+    if (
+        !confirmed
+    ) {
 
         return;
 
@@ -786,7 +853,7 @@ function clearSession() {
 
 
 /* =========================
-   BUTTON EVENTS
+   EVENTS
 ========================= */
 
 button.addEventListener(
@@ -795,10 +862,11 @@ button.addEventListener(
 );
 
 
-clearHistoryButton.addEventListener(
-    "click",
-    clearSession
-);
+clearHistoryButton
+    .addEventListener(
+        "click",
+        clearSession
+    );
 
 
 /* =========================
@@ -815,3 +883,48 @@ pullCounter.textContent =
         2,
         "0"
     )}`;
+
+
+/* =========================
+   PWA SERVICE WORKER
+========================= */
+
+if (
+    "serviceWorker"
+    in navigator
+) {
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            navigator
+                .serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+                .then(
+                    registration => {
+
+                        console.log(
+                            "Arm Pyramid PWA ready",
+                            registration
+                        );
+
+                    }
+                )
+                .catch(
+                    error => {
+
+                        console.error(
+                            "Service Worker error:",
+                            error
+                        );
+
+                    }
+                );
+
+        }
+    );
+
+}
