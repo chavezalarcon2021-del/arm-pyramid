@@ -1,54 +1,32 @@
 /* =========================
-   TECHNIQUE DEFINITIONS
+   TECHNIQUES
 ========================= */
 
 const techniqueOrder = [
-
     "High Hook",
-
     "Hook & Drag",
-
     "Hook & Drive",
-
     "Shoulder Press",
-
     "Flop Press",
-
     "Posting Toproll",
-
     "Sweeping Toproll",
-
     "Low-Hand Toproll",
-
     "Open Toproll",
-
     "King's Move"
-
 ];
 
 
 const commitmentByTechnique = {
-
     "Flop Press": 3,
-
     "Shoulder Press": 3,
-
     "Hook & Drive": 2,
-
     "Hook & Drag": 1,
-
     "High Hook": 0,
-
     "Posting Toproll": -1,
-
     "Sweeping Toproll": -2,
-
     "Low-Hand Toproll": -2,
-
     "Open Toproll": -3,
-
     "King's Move": -3
-
 };
 
 
@@ -57,123 +35,85 @@ const commitmentByTechnique = {
 ========================= */
 
 const button =
-    document.getElementById(
-        "trainButton"
-    );
-
+    document.getElementById("trainButton");
 
 const techniqueText =
-    document.getElementById(
-        "technique"
-    );
-
+    document.getElementById("technique");
 
 const techniqueSide =
-    document.getElementById(
-        "techniqueSide"
-    );
-
+    document.getElementById("techniqueSide");
 
 const pullCounter =
-    document.getElementById(
-        "pullCounter"
-    );
-
+    document.getElementById("pullCounter");
 
 const sessionProgress =
-    document.getElementById(
-        "sessionProgress"
-    );
-
+    document.getElementById("sessionProgress");
 
 const commitmentIndicator =
-    document.getElementById(
-        "commitmentIndicator"
-    );
-
+    document.getElementById("commitmentIndicator");
 
 const historyList =
-    document.getElementById(
-        "historyList"
-    );
-
+    document.getElementById("historyList");
 
 const totalPullsElement =
-    document.getElementById(
-        "totalPulls"
-    );
-
+    document.getElementById("totalPulls");
 
 const insidePullsElement =
-    document.getElementById(
-        "insidePulls"
-    );
-
+    document.getElementById("insidePulls");
 
 const outsidePullsElement =
-    document.getElementById(
-        "outsidePulls"
-    );
-
+    document.getElementById("outsidePulls");
 
 const averageCommitmentElement =
-    document.getElementById(
-        "averageCommitment"
-    );
+    document.getElementById("averageCommitment");
 
+const recordValueElement =
+    document.getElementById("recordValue");
+
+const winRateElement =
+    document.getElementById("winRate");
 
 const clearHistoryButton =
-    document.getElementById(
-        "clearHistoryButton"
-    );
-
+    document.getElementById("clearHistoryButton");
 
 const settingsToggle =
-    document.getElementById(
-        "settingsToggle"
-    );
-
+    document.getElementById("settingsToggle");
 
 const settingsContent =
-    document.getElementById(
-        "settingsContent"
-    );
-
+    document.getElementById("settingsContent");
 
 const settingsChevron =
-    document.getElementById(
-        "settingsChevron"
-    );
-
+    document.getElementById("settingsChevron");
 
 const settingsSummary =
-    document.getElementById(
-        "settingsSummary"
-    );
-
+    document.getElementById("settingsSummary");
 
 const settingsWarning =
-    document.getElementById(
-        "settingsWarning"
-    );
-
+    document.getElementById("settingsWarning");
 
 const avoidRepeatsToggle =
-    document.getElementById(
-        "avoidRepeatsToggle"
-    );
-
+    document.getElementById("avoidRepeatsToggle");
 
 const enableAllTechniques =
-    document.getElementById(
-        "enableAllTechniques"
-    );
-
+    document.getElementById("enableAllTechniques");
 
 const disableAllTechniques =
-    document.getElementById(
-        "disableAllTechniques"
-    );
+    document.getElementById("disableAllTechniques");
+
+
+/* OUTCOME */
+
+const outcomePanel =
+    document.getElementById("outcomePanel");
+
+const winButton =
+    document.getElementById("winButton");
+
+const lossButton =
+    document.getElementById("lossButton");
+
+const skipButton =
+    document.getElementById("skipButton");
 
 
 const nodes =
@@ -183,7 +123,6 @@ const nodes =
         )
     );
 
-
 const poolButtons =
     Array.from(
         document.querySelectorAll(
@@ -191,14 +130,12 @@ const poolButtons =
         )
     );
 
-
 const lengthButtons =
     Array.from(
         document.querySelectorAll(
             ".length-option"
         )
     );
-
 
 const techniqueChips =
     Array.from(
@@ -213,19 +150,10 @@ const techniqueChips =
 ========================= */
 
 const defaultSettings = {
-
-    pool:
-        "all",
-
-    sessionLength:
-        10,
-
-    avoidRepeats:
-        true,
-
-    enabledTechniques:
-        [...techniqueOrder]
-
+    pool: "all",
+    sessionLength: 10,
+    avoidRepeats: true,
+    enabledTechniques: [...techniqueOrder]
 };
 
 
@@ -245,15 +173,15 @@ function loadSettings() {
 
             return {
                 ...defaultSettings,
-                enabledTechniques:
-                    [...techniqueOrder]
+                enabledTechniques: [
+                    ...techniqueOrder
+                ]
             };
 
         }
 
 
         return {
-
             pool:
                 saved.pool ||
                 "all",
@@ -271,17 +199,14 @@ function loadSettings() {
                     saved.enabledTechniques
                 )
                 ?
-                saved.enabledTechniques
-                .filter(
+                saved.enabledTechniques.filter(
                     technique =>
-                        techniqueOrder
-                        .includes(
+                        techniqueOrder.includes(
                             technique
                         )
                 )
                 :
                 [...techniqueOrder]
-
         };
 
     }
@@ -289,12 +214,10 @@ function loadSettings() {
     catch {
 
         return {
-
             ...defaultSettings,
-
-            enabledTechniques:
-                [...techniqueOrder]
-
+            enabledTechniques: [
+                ...techniqueOrder
+            ]
         };
 
     }
@@ -309,20 +232,15 @@ let settings =
 function saveSettings() {
 
     localStorage.setItem(
-
         "armPyramidSettings",
-
-        JSON.stringify(
-            settings
-        )
-
+        JSON.stringify(settings)
     );
 
 }
 
 
 /* =========================
-   SESSION HISTORY
+   HISTORY
 ========================= */
 
 let sessionHistory = [];
@@ -341,18 +259,19 @@ try {
 
 catch {
 
-    sessionHistory =
-        [];
+    sessionHistory = [];
 
 }
 
 
 /*
-    Normalize previous records.
+    OLD PULLS:
+    If they don't have a win/loss result,
+    they become "unrated".
 
-    This also fixes older pulls
-    created before commitments
-    became fixed.
+    NEW PULL:
+    Starts with result = null until
+    WIN / LOSS / SKIP is selected.
 */
 
 sessionHistory =
@@ -365,8 +284,23 @@ sessionHistory =
                 ];
 
 
-            return {
+            let result =
+                pull.result;
 
+
+            if (
+                result !== "win" &&
+                result !== "loss" &&
+                result !== "skip"
+            ) {
+
+                result =
+                    "unrated";
+
+            }
+
+
+            return {
                 ...pull,
 
                 number:
@@ -375,17 +309,19 @@ sessionHistory =
                 commitment:
                     fixedCommitment ??
                     pull.commitment ??
-                    0
+                    0,
 
+                result:
+                    result
             };
 
         }
     );
 
 
-let pulling =
-    false;
+let pulling = false;
 
+let pendingPullIndex = null;
 
 let pullNumber =
     sessionHistory.length + 1;
@@ -398,47 +334,21 @@ let pullNumber =
 function wait(ms) {
 
     return new Promise(
-        resolve => {
-
+        resolve =>
             setTimeout(
                 resolve,
                 ms
-            );
-
-        }
+            )
     );
 
 }
 
 
-function formatCommitment(
-    value
-) {
-
-    if (
-        value > 0
-    ) {
-
-        return `+${value}`;
-
-    }
-
-
-    return String(
-        value
-    );
-
-}
-
-
-function randomItem(
-    array
-) {
+function randomItem(array) {
 
     return array[
         Math.floor(
-            Math.random()
-            *
+            Math.random() *
             array.length
         )
     ];
@@ -446,8 +356,37 @@ function randomItem(
 }
 
 
+function formatCommitment(value) {
+
+    if (value > 0) {
+
+        return `+${value}`;
+
+    }
+
+    return String(value);
+
+}
+
+
 /* =========================
-   CLEAR PYRAMID
+   SAVE
+========================= */
+
+function saveSession() {
+
+    localStorage.setItem(
+        "armPyramidSession",
+        JSON.stringify(
+            sessionHistory
+        )
+    );
+
+}
+
+
+/* =========================
+   NODES
 ========================= */
 
 function clearNodes() {
@@ -466,8 +405,35 @@ function clearNodes() {
 }
 
 
+function highlightTechnique(
+    techniqueName
+) {
+
+    clearNodes();
+
+
+    const node =
+        nodes.find(
+            item =>
+                item.dataset.technique ===
+                techniqueName
+        );
+
+
+    if (node) {
+
+        node.classList.add(
+            "active",
+            "winner"
+        );
+
+    }
+
+}
+
+
 /* =========================
-   ELIGIBLE TECHNIQUES
+   ELIGIBLE NODES
 ========================= */
 
 function getEligibleNodes() {
@@ -478,20 +444,14 @@ function getEligibleNodes() {
             const technique =
                 node.dataset.technique;
 
-
             const side =
                 node.dataset.side;
 
 
-            const enabled =
-                settings
-                .enabledTechniques
-                .includes(
-                    technique
-                );
-
-
-            if (!enabled) {
+            if (
+                !settings.enabledTechniques
+                    .includes(technique)
+            ) {
 
                 return false;
 
@@ -503,8 +463,7 @@ function getEligibleNodes() {
                 "inside"
             ) {
 
-                return side ===
-                    "inside";
+                return side === "inside";
 
             }
 
@@ -514,8 +473,7 @@ function getEligibleNodes() {
                 "outside"
             ) {
 
-                return side ===
-                    "outside";
+                return side === "outside";
 
             }
 
@@ -529,7 +487,7 @@ function getEligibleNodes() {
 
 
 /* =========================
-   SESSION TARGET
+   SESSION STATE
 ========================= */
 
 function isUnlimited() {
@@ -542,11 +500,18 @@ function isUnlimited() {
 }
 
 
+function hasPendingResult() {
+
+    return (
+        pendingPullIndex !== null
+    );
+
+}
+
+
 function isSessionComplete() {
 
-    if (
-        isUnlimited()
-    ) {
+    if (isUnlimited()) {
 
         return false;
 
@@ -555,110 +520,65 @@ function isSessionComplete() {
 
     return (
         sessionHistory.length >=
-        Number(
-            settings.sessionLength
-        )
+        Number(settings.sessionLength)
+        &&
+        !hasPendingResult()
     );
 
 }
 
 
 /* =========================
-   SHOULDER INDICATOR
+   COMMITMENT
 ========================= */
 
-function setCommitment(
-    value
-) {
+function setCommitment(value) {
 
     const positions = {
-
         3: 0,
-
         2: 16.67,
-
         1: 33.33,
-
         0: 50,
-
         "-1": 66.67,
-
         "-2": 83.33,
-
         "-3": 100
-
     };
 
 
-    commitmentIndicator
-        .style
-        .left =
-        positions[value]
-        +
-        "%";
+    commitmentIndicator.style.left =
+        positions[value] + "%";
 
 
-    commitmentIndicator
-        .classList
-        .remove(
-            "inside",
-            "outside",
-            "neutral"
+    commitmentIndicator.classList.remove(
+        "inside",
+        "outside",
+        "neutral"
+    );
+
+
+    if (value > 0) {
+
+        commitmentIndicator.classList.add(
+            "inside"
         );
-
-
-    if (
-        value > 0
-    ) {
-
-        commitmentIndicator
-            .classList
-            .add(
-                "inside"
-            );
 
     }
 
-    else if (
-        value < 0
-    ) {
+    else if (value < 0) {
 
-        commitmentIndicator
-            .classList
-            .add(
-                "outside"
-            );
+        commitmentIndicator.classList.add(
+            "outside"
+        );
 
     }
 
     else {
 
-        commitmentIndicator
-            .classList
-            .add(
-                "neutral"
-            );
+        commitmentIndicator.classList.add(
+            "neutral"
+        );
 
     }
-
-}
-
-
-/* =========================
-   SAVE SESSION
-========================= */
-
-function saveSession() {
-
-    localStorage.setItem(
-
-        "armPyramidSession",
-
-        JSON.stringify(
-            sessionHistory
-        )
-
-    );
 
 }
 
@@ -673,9 +593,7 @@ function updateSessionProgress() {
         sessionHistory.length;
 
 
-    if (
-        isUnlimited()
-    ) {
+    if (isUnlimited()) {
 
         sessionProgress.textContent =
             `${current} / ∞`;
@@ -690,18 +608,38 @@ function updateSessionProgress() {
     }
 
 
-    sessionProgress
-        .classList
-        .toggle(
-            "complete",
-            isSessionComplete()
-        );
+    sessionProgress.classList.toggle(
+        "complete",
+        isSessionComplete()
+    );
 
 }
 
 
 /* =========================
-   BUTTON STATE
+   OUTCOME UI
+========================= */
+
+function showOutcomePanel() {
+
+    outcomePanel.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+function hideOutcomePanel() {
+
+    outcomePanel.classList.add(
+        "hidden"
+    );
+
+}
+
+
+/* =========================
+   START BUTTON STATE
 ========================= */
 
 function updatePullButton() {
@@ -710,89 +648,85 @@ function updatePullButton() {
         getEligibleNodes();
 
 
-    button
-        .classList
-        .remove(
-            "session-complete"
-        );
+    button.classList.remove(
+        "session-complete",
+        "awaiting-result"
+    );
 
 
     if (
-        eligible.length ===
-        0
+        eligible.length === 0
     ) {
 
-        button.disabled =
-            true;
-
+        button.disabled = true;
 
         button.textContent =
             "⚠ SELECT A TECHNIQUE";
 
-
         return;
 
     }
 
 
-    if (
-        isSessionComplete()
-    ) {
+    if (pulling) {
 
-        button.disabled =
-            true;
-
-
-        button
-            .classList
-            .add(
-                "session-complete"
-            );
-
-
-        button.textContent =
-            "✓ SESSION COMPLETE";
-
-
-        return;
-
-    }
-
-
-    if (
-        pulling
-    ) {
-
-        button.disabled =
-            true;
-
+        button.disabled = true;
 
         button.textContent =
             "PULLING...";
 
+        return;
+
+    }
+
+
+    if (hasPendingResult()) {
+
+        button.disabled = true;
+
+        button.classList.add(
+            "awaiting-result"
+        );
+
+        button.textContent =
+            "RATE THIS PULL ↓";
 
         return;
 
     }
 
 
-    button.disabled =
-        false;
+    if (isSessionComplete()) {
+
+        button.disabled = true;
+
+        button.classList.add(
+            "session-complete"
+        );
+
+        button.textContent =
+            "✓ SESSION COMPLETE";
+
+        return;
+
+    }
+
+
+    button.disabled = false;
 
 
     if (
-        sessionHistory.length ===
-        0
+        sessionHistory.length === 0
     ) {
 
-        button.innerHTML =
+        button.textContent =
             "⚡ START PULL";
 
     }
 
     else {
 
-        button.innerHTML =
+        button.textContent =
             "↻ PULL AGAIN";
 
     }
@@ -809,15 +743,11 @@ function updateSettingsUI() {
     poolButtons.forEach(
         poolButton => {
 
-            poolButton
-                .classList
-                .toggle(
-                    "active",
-                    poolButton
-                    .dataset
-                    .pool ===
-                    settings.pool
-                );
+            poolButton.classList.toggle(
+                "active",
+                poolButton.dataset.pool ===
+                settings.pool
+            );
 
         }
     );
@@ -827,25 +757,16 @@ function updateSettingsUI() {
         lengthButton => {
 
             const value =
-                lengthButton
-                .dataset
-                .length;
+                lengthButton.dataset.length;
 
 
-            const matches =
+            lengthButton.classList.toggle(
+                "active",
                 value ===
                 String(
-                    settings
-                    .sessionLength
-                );
-
-
-            lengthButton
-                .classList
-                .toggle(
-                    "active",
-                    matches
-                );
+                    settings.sessionLength
+                )
+            );
 
         }
     );
@@ -855,71 +776,54 @@ function updateSettingsUI() {
         settings.avoidRepeats;
 
 
+    const eligibleNodes =
+        getEligibleNodes();
+
+
     techniqueChips.forEach(
         chip => {
 
             const technique =
-                chip
-                .dataset
-                .filterTechnique;
-
+                chip.dataset.filterTechnique;
 
             const side =
-                chip
-                .dataset
-                .filterSide;
+                chip.dataset.filterSide;
 
 
-            const selected =
-                settings
-                .enabledTechniques
-                .includes(
-                    technique
-                );
+            chip.classList.toggle(
+                "selected",
+                settings.enabledTechniques
+                    .includes(technique)
+            );
 
 
-            chip
-                .classList
-                .toggle(
-                    "selected",
-                    selected
-                );
-
-
-            let outsidePool =
-                false;
+            let outsidePool = false;
 
 
             if (
-                settings.pool ===
-                "inside"
+                settings.pool === "inside"
             ) {
 
                 outsidePool =
-                    side !==
-                    "inside";
+                    side !== "inside";
 
             }
 
 
             if (
-                settings.pool ===
-                "outside"
+                settings.pool === "outside"
             ) {
 
                 outsidePool =
-                    side !==
-                    "outside";
+                    side !== "outside";
 
             }
 
 
-            chip
-                .classList
-                .toggle(
-                    "pool-muted",
-                    outsidePool
-                );
+            chip.classList.toggle(
+                "pool-muted",
+                outsidePool
+            );
 
         }
     );
@@ -928,39 +832,21 @@ function updateSettingsUI() {
     nodes.forEach(
         node => {
 
-            const technique =
-                node.dataset.technique;
-
-
-            const eligible =
-                getEligibleNodes()
-                .includes(
+            node.classList.toggle(
+                "filtered-out",
+                !eligibleNodes.includes(
                     node
-                );
-
-
-            node
-                .classList
-                .toggle(
-                    "filtered-out",
-                    !eligible
-                );
+                )
+            );
 
         }
     );
 
 
     const poolName = {
-
-        all:
-            "ALL",
-
-        inside:
-            "INSIDE",
-
-        outside:
-            "OUTSIDE"
-
+        all: "ALL",
+        inside: "INSIDE",
+        outside: "OUTSIDE"
     }[
         settings.pool
     ];
@@ -978,22 +864,13 @@ function updateSettingsUI() {
         `${poolName} • ${sessionName}`;
 
 
-    const noEligible =
-        getEligibleNodes()
-        .length ===
-        0;
-
-
-    settingsWarning
-        .classList
-        .toggle(
-            "hidden",
-            !noEligible
-        );
+    settingsWarning.classList.toggle(
+        "hidden",
+        eligibleNodes.length !== 0
+    );
 
 
     updateSessionProgress();
-
 
     updatePullButton();
 
@@ -1026,13 +903,30 @@ function updateStats() {
         ).length;
 
 
-    let average =
-        0;
+    const wins =
+        sessionHistory.filter(
+            pull =>
+                pull.result ===
+                "win"
+        ).length;
 
 
-    if (
-        total > 0
-    ) {
+    const losses =
+        sessionHistory.filter(
+            pull =>
+                pull.result ===
+                "loss"
+        ).length;
+
+
+    const ratedPulls =
+        wins + losses;
+
+
+    let average = 0;
+
+
+    if (total > 0) {
 
         const sum =
             sessionHistory.reduce(
@@ -1040,37 +934,58 @@ function updateStats() {
                     currentTotal,
                     pull
                 ) =>
-                    currentTotal
-                    +
+                    currentTotal +
                     pull.commitment,
                 0
             );
 
 
         average =
-            sum /
-            total;
+            sum / total;
 
     }
 
 
-    totalPullsElement
-        .textContent =
+    let winRateText = "—";
+
+
+    if (ratedPulls > 0) {
+
+        const winRate =
+            (
+                wins /
+                ratedPulls
+            ) *
+            100;
+
+
+        winRateText =
+            `${Math.round(winRate)}%`;
+
+    }
+
+
+    totalPullsElement.textContent =
         total;
 
 
-    insidePullsElement
-        .textContent =
+    insidePullsElement.textContent =
         inside;
 
 
-    outsidePullsElement
-        .textContent =
+    outsidePullsElement.textContent =
         outside;
 
 
-    averageCommitmentElement
-        .textContent =
+    recordValueElement.textContent =
+        `${wins}W–${losses}L`;
+
+
+    winRateElement.textContent =
+        winRateText;
+
+
+    averageCommitmentElement.textContent =
         average > 0
         ?
         `+${average.toFixed(1)}`
@@ -1083,6 +998,34 @@ function updateStats() {
 /* =========================
    HISTORY
 ========================= */
+
+function getResultLabel(result) {
+
+    if (result === "win") {
+
+        return "✓ WIN";
+
+    }
+
+
+    if (result === "loss") {
+
+        return "✕ LOSS";
+
+    }
+
+
+    if (result === "skip") {
+
+        return "SKIP";
+
+    }
+
+
+    return "UNRATED";
+
+}
+
 
 function renderHistory() {
 
@@ -1111,21 +1054,15 @@ function renderHistory() {
 
         updatePullButton();
 
-
         return;
 
     }
 
 
     const recentPulls =
-        [
-            ...sessionHistory
-        ]
+        [...sessionHistory]
         .reverse()
-        .slice(
-            0,
-            10
-        );
+        .slice(0,10);
 
 
     historyList.innerHTML =
@@ -1155,6 +1092,14 @@ function renderHistory() {
                         "negative";
 
                 }
+
+
+                const resultClass =
+                    pull.result === null
+                    ?
+                    "unrated"
+                    :
+                    pull.result;
 
 
                 return `
@@ -1201,9 +1146,7 @@ function renderHistory() {
                                 ${pull.side}
                             "
                         >
-
                             ${pull.code}
-
                         </div>
 
 
@@ -1213,12 +1156,21 @@ function renderHistory() {
                                 ${commitmentClass}
                             "
                         >
-
-                            SHOULDER
                             ${formatCommitment(
                                 pull.commitment
                             )}
+                        </div>
 
+
+                        <div
+                            class="
+                                history-result
+                                ${resultClass}
+                            "
+                        >
+                            ${getResultLabel(
+                                pull.result
+                            )}
                         </div>
 
                     </div>
@@ -1267,6 +1219,9 @@ function addPullToHistory(
         commitment:
             commitment,
 
+        result:
+            null,
+
         date:
             new Date()
             .toISOString()
@@ -1279,16 +1234,70 @@ function addPullToHistory(
     );
 
 
+    pendingPullIndex =
+        sessionHistory.length - 1;
+
+
     saveSession();
 
-
     renderHistory();
+
+    showOutcomePanel();
 
 }
 
 
 /* =========================
-   FINAL WINNER
+   RATE PULL
+========================= */
+
+function rateCurrentPull(
+    result
+) {
+
+    if (
+        pendingPullIndex === null
+    ) {
+
+        return;
+
+    }
+
+
+    const pull =
+        sessionHistory[
+            pendingPullIndex
+        ];
+
+
+    if (!pull) {
+
+        return;
+
+    }
+
+
+    pull.result =
+        result;
+
+
+    pendingPullIndex =
+        null;
+
+
+    saveSession();
+
+    hideOutcomePanel();
+
+    renderHistory();
+
+    updatePullButton();
+
+}
+
+
+/* =========================
+   WINNER
 ========================= */
 
 function getFinalWinner(
@@ -1296,8 +1305,7 @@ function getFinalWinner(
 ) {
 
     if (
-        !settings
-        .avoidRepeats
+        !settings.avoidRepeats
     ) {
 
         return randomItem(
@@ -1308,27 +1316,21 @@ function getFinalWinner(
 
 
     if (
-        eligibleNodes.length <=
-        1
+        eligibleNodes.length <= 1
     ) {
 
-        return eligibleNodes[
-            0
-        ];
+        return eligibleNodes[0];
 
     }
 
 
     const lastPull =
         sessionHistory[
-            sessionHistory.length -
-            1
+            sessionHistory.length - 1
         ];
 
 
-    if (
-        !lastPull
-    ) {
+    if (!lastPull) {
 
         return randomItem(
             eligibleNodes
@@ -1340,15 +1342,13 @@ function getFinalWinner(
     const candidates =
         eligibleNodes.filter(
             node =>
-                node.dataset
-                .technique !==
+                node.dataset.technique !==
                 lastPull.technique
         );
 
 
     if (
-        candidates.length ===
-        0
+        candidates.length === 0
     ) {
 
         return randomItem(
@@ -1373,6 +1373,7 @@ async function startPull() {
 
     if (
         pulling ||
+        hasPendingResult() ||
         isSessionComplete()
     ) {
 
@@ -1386,8 +1387,7 @@ async function startPull() {
 
 
     if (
-        eligibleNodes.length ===
-        0
+        eligibleNodes.length === 0
     ) {
 
         updateSettingsUI();
@@ -1397,66 +1397,45 @@ async function startPull() {
     }
 
 
-    pulling =
-        true;
+    pulling = true;
 
+    hideOutcomePanel();
 
     updatePullButton();
 
 
-    techniqueText
-        .textContent =
+    techniqueText.textContent =
         "PULLING...";
 
 
-    techniqueSide
-        .textContent =
+    techniqueSide.textContent =
         "READING THE TABLE";
 
 
     clearNodes();
 
-
-    setCommitment(
-        0
-    );
+    setCommitment(0);
 
 
     const rouletteSpeeds = [
-
         55,
-
         60,
-
         65,
-
         70,
-
         80,
-
         90,
-
         105,
-
         120,
-
         140,
-
         165,
-
         190,
-
         225,
-
         270,
-
         330
-
     ];
 
 
-    let previousNode =
-        null;
+    let previousNode = null;
 
 
     for (
@@ -1469,8 +1448,7 @@ async function startPull() {
 
 
         if (
-            eligibleNodes.length >
-            1 &&
+            eligibleNodes.length > 1 &&
             previousNode
         ) {
 
@@ -1493,20 +1471,16 @@ async function startPull() {
         clearNodes();
 
 
-        currentNode
-            .classList
-            .add(
-                "active"
-            );
+        currentNode.classList.add(
+            "active"
+        );
 
 
         previousNode =
             currentNode;
 
 
-        await wait(
-            speed
-        );
+        await wait(speed);
 
     }
 
@@ -1520,30 +1494,22 @@ async function startPull() {
         );
 
 
-    winner
-        .classList
-        .add(
-            "active",
-            "winner"
-        );
+    winner.classList.add(
+        "active",
+        "winner"
+    );
 
 
     const techniqueName =
-        winner
-            .dataset
-            .technique;
+        winner.dataset.technique;
 
 
     const techniqueCode =
-        winner
-            .dataset
-            .code;
+        winner.dataset.code;
 
 
     const side =
-        winner
-            .dataset
-            .side;
+        winner.dataset.side;
 
 
     const commitment =
@@ -1552,17 +1518,13 @@ async function startPull() {
         ];
 
 
-    techniqueText
-        .textContent =
-        techniqueName
-        .toUpperCase();
+    techniqueText.textContent =
+        techniqueName.toUpperCase();
 
 
-    techniqueSide
-        .textContent =
+    techniqueSide.textContent =
         `${
-            side ===
-            "inside"
+            side === "inside"
             ?
             "INSIDE GAME"
             :
@@ -1570,9 +1532,7 @@ async function startPull() {
         } • SHOULDER ${formatCommitment(commitment)}`;
 
 
-    await wait(
-        250
-    );
+    await wait(250);
 
 
     setCommitment(
@@ -1580,8 +1540,7 @@ async function startPull() {
     );
 
 
-    pullCounter
-        .textContent =
+    pullCounter.textContent =
         `PULL #${String(
             pullNumber
         ).padStart(
@@ -1591,24 +1550,16 @@ async function startPull() {
 
 
     addPullToHistory(
-
         techniqueName,
-
         techniqueCode,
-
         side,
-
         commitment
-
     );
 
 
     pullNumber++;
 
-
-    pulling =
-        false;
-
+    pulling = false;
 
     updatePullButton();
 
@@ -1627,21 +1578,18 @@ function clearSession() {
         );
 
 
-    if (
-        !confirmed
-    ) {
+    if (!confirmed) {
 
         return;
 
     }
 
 
-    sessionHistory =
-        [];
+    sessionHistory = [];
 
+    pendingPullIndex = null;
 
-    pullNumber =
-        1;
+    pullNumber = 1;
 
 
     localStorage.removeItem(
@@ -1651,29 +1599,24 @@ function clearSession() {
 
     clearNodes();
 
+    hideOutcomePanel();
 
-    setCommitment(
-        0
-    );
+    setCommitment(0);
 
 
-    techniqueText
-        .textContent =
+    techniqueText.textContent =
         "READY?";
 
 
-    techniqueSide
-        .textContent =
+    techniqueSide.textContent =
         "PRESS START TO BEGIN";
 
 
-    pullCounter
-        .textContent =
+    pullCounter.textContent =
         "PULL #01";
 
 
     renderHistory();
-
 
     updateSettingsUI();
 
@@ -1684,61 +1627,54 @@ function clearSession() {
    SETTINGS EVENTS
 ========================= */
 
-settingsToggle
-    .addEventListener(
-        "click",
-        () => {
+settingsToggle.addEventListener(
+    "click",
+    () => {
 
-            const collapsed =
-                settingsContent
-                .classList
-                .toggle(
-                    "collapsed"
-                );
+        const collapsed =
+            settingsContent.classList.toggle(
+                "collapsed"
+            );
 
 
-            settingsChevron
-                .textContent =
-                collapsed
-                ?
-                "+"
-                :
-                "−";
+        settingsChevron.textContent =
+            collapsed
+            ?
+            "+"
+            :
+            "−";
 
-        }
-    );
+    }
+);
 
 
 poolButtons.forEach(
     poolButton => {
 
-        poolButton
-            .addEventListener(
-                "click",
-                () => {
+        poolButton.addEventListener(
+            "click",
+            () => {
 
-                    if (
-                        pulling
-                    ) {
+                if (
+                    pulling ||
+                    hasPendingResult()
+                ) {
 
-                        return;
-
-                    }
-
-
-                    settings.pool =
-                        poolButton
-                        .dataset
-                        .pool;
-
-
-                    saveSettings();
-
-
-                    updateSettingsUI();
+                    return;
 
                 }
-            );
+
+
+                settings.pool =
+                    poolButton.dataset.pool;
+
+
+                saveSettings();
+
+                updateSettingsUI();
+
+            }
+        );
 
     }
 );
@@ -1747,214 +1683,226 @@ poolButtons.forEach(
 lengthButtons.forEach(
     lengthButton => {
 
-        lengthButton
-            .addEventListener(
-                "click",
-                () => {
+        lengthButton.addEventListener(
+            "click",
+            () => {
 
-                    if (
-                        pulling
-                    ) {
+                if (
+                    pulling ||
+                    hasPendingResult()
+                ) {
 
-                        return;
-
-                    }
-
-
-                    const value =
-                        lengthButton
-                        .dataset
-                        .length;
-
-
-                    settings
-                        .sessionLength =
-                        value ===
-                        "unlimited"
-                        ?
-                        "unlimited"
-                        :
-                        Number(
-                            value
-                        );
-
-
-                    saveSettings();
-
-
-                    updateSettingsUI();
+                    return;
 
                 }
-            );
+
+
+                const value =
+                    lengthButton.dataset.length;
+
+
+                settings.sessionLength =
+                    value === "unlimited"
+                    ?
+                    "unlimited"
+                    :
+                    Number(value);
+
+
+                saveSettings();
+
+                updateSettingsUI();
+
+            }
+        );
 
     }
 );
 
 
-avoidRepeatsToggle
-    .addEventListener(
-        "change",
-        () => {
+avoidRepeatsToggle.addEventListener(
+    "change",
+    () => {
 
-            settings
-                .avoidRepeats =
-                avoidRepeatsToggle
-                .checked;
+        settings.avoidRepeats =
+            avoidRepeatsToggle.checked;
 
 
-            saveSettings();
+        saveSettings();
 
+        updateSettingsUI();
 
-            updateSettingsUI();
-
-        }
-    );
+    }
+);
 
 
 techniqueChips.forEach(
     chip => {
 
-        chip
-            .addEventListener(
-                "click",
-                () => {
+        chip.addEventListener(
+            "click",
+            () => {
 
-                    if (
-                        pulling
-                    ) {
+                if (
+                    pulling ||
+                    hasPendingResult()
+                ) {
 
-                        return;
+                    return;
 
-                    }
+                }
 
 
-                    const technique =
-                        chip
-                        .dataset
+                const technique =
+                    chip.dataset
                         .filterTechnique;
 
 
-                    const enabled =
-                        settings
-                        .enabledTechniques
-                        .includes(
-                            technique
+                const enabled =
+                    settings
+                    .enabledTechniques
+                    .includes(
+                        technique
+                    );
+
+
+                if (enabled) {
+
+                    settings.enabledTechniques =
+                        settings.enabledTechniques
+                        .filter(
+                            item =>
+                                item !== technique
                         );
 
+                }
 
-                    if (
-                        enabled
-                    ) {
+                else {
 
-                        settings
-                            .enabledTechniques =
-                            settings
-                            .enabledTechniques
-                            .filter(
-                                item =>
-                                    item !==
-                                    technique
-                            );
-
-                    }
-
-                    else {
-
-                        settings
-                            .enabledTechniques
-                            .push(
-                                technique
-                            );
-
-                    }
-
-
-                    saveSettings();
-
-
-                    updateSettingsUI();
+                    settings.enabledTechniques.push(
+                        technique
+                    );
 
                 }
-            );
+
+
+                saveSettings();
+
+                updateSettingsUI();
+
+            }
+        );
 
     }
 );
 
 
-enableAllTechniques
-    .addEventListener(
-        "click",
-        () => {
+enableAllTechniques.addEventListener(
+    "click",
+    () => {
 
-            if (
-                pulling
-            ) {
+        if (
+            pulling ||
+            hasPendingResult()
+        ) {
 
-                return;
-
-            }
-
-
-            settings
-                .enabledTechniques =
-                [
-                    ...techniqueOrder
-                ];
-
-
-            saveSettings();
-
-
-            updateSettingsUI();
+            return;
 
         }
-    );
 
 
-disableAllTechniques
-    .addEventListener(
-        "click",
-        () => {
-
-            if (
-                pulling
-            ) {
-
-                return;
-
-            }
+        settings.enabledTechniques =
+            [...techniqueOrder];
 
 
-            settings
-                .enabledTechniques =
-                [];
+        saveSettings();
+
+        updateSettingsUI();
+
+    }
+);
 
 
-            saveSettings();
+disableAllTechniques.addEventListener(
+    "click",
+    () => {
 
+        if (
+            pulling ||
+            hasPendingResult()
+        ) {
 
-            updateSettingsUI();
+            return;
 
         }
-    );
+
+
+        settings.enabledTechniques =
+            [];
+
+
+        saveSettings();
+
+        updateSettingsUI();
+
+    }
+);
+
+
+/* =========================
+   RESULT EVENTS
+========================= */
+
+winButton.addEventListener(
+    "click",
+    () => {
+
+        rateCurrentPull(
+            "win"
+        );
+
+    }
+);
+
+
+lossButton.addEventListener(
+    "click",
+    () => {
+
+        rateCurrentPull(
+            "loss"
+        );
+
+    }
+);
+
+
+skipButton.addEventListener(
+    "click",
+    () => {
+
+        rateCurrentPull(
+            "skip"
+        );
+
+    }
+);
 
 
 /* =========================
    MAIN EVENTS
 ========================= */
 
-button
-    .addEventListener(
-        "click",
-        startPull
-    );
+button.addEventListener(
+    "click",
+    startPull
+);
 
 
-clearHistoryButton
-    .addEventListener(
-        "click",
-        clearSession
-    );
+clearHistoryButton.addEventListener(
+    "click",
+    clearSession
+);
 
 
 /* =========================
@@ -1963,21 +1911,21 @@ clearHistoryButton
 
 saveSession();
 
-
 renderHistory();
-
 
 updateSettingsUI();
 
 
-pullCounter
-    .textContent =
+pullCounter.textContent =
     `PULL #${String(
         pullNumber
     ).padStart(
         2,
         "0"
     )}`;
+
+
+hideOutcomePanel();
 
 
 /* =========================
@@ -1989,38 +1937,36 @@ if (
     in navigator
 ) {
 
-    window
-        .addEventListener(
-            "load",
-            () => {
+    window.addEventListener(
+        "load",
+        () => {
 
-                navigator
-                    .serviceWorker
-                    .register(
-                        "./service-worker.js"
-                    )
-                    .then(
-                        registration => {
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+                .then(
+                    registration => {
 
-                            console.log(
-                                "Arm Pyramid PWA ready",
-                                registration
-                            );
+                        console.log(
+                            "Arm Pyramid PWA ready",
+                            registration
+                        );
 
-                        }
-                    )
-                    .catch(
-                        error => {
+                    }
+                )
+                .catch(
+                    error => {
 
-                            console.error(
-                                "Service Worker error:",
-                                error
-                            );
+                        console.error(
+                            "Service Worker error:",
+                            error
+                        );
 
-                        }
-                    );
+                    }
+                );
 
-            }
-        );
+        }
+    );
 
 }

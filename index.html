@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -11,72 +10,27 @@
 
     <title>Arm Pyramid</title>
 
-    <meta
-        name="theme-color"
-        content="#05080a"
-    >
+    <meta name="theme-color" content="#05080a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Arm Pyramid">
+    <meta name="mobile-web-app-capable" content="yes">
 
-    <meta
-        name="apple-mobile-web-app-capable"
-        content="yes"
-    >
-
-    <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-    >
-
-    <meta
-        name="apple-mobile-web-app-title"
-        content="Arm Pyramid"
-    >
-
-    <meta
-        name="mobile-web-app-capable"
-        content="yes"
-    >
-
-    <link
-        rel="manifest"
-        href="./manifest.json"
-    >
-
-    <link
-        rel="apple-touch-icon"
-        href="./icon-192.png"
-    >
-
-    <link
-        rel="stylesheet"
-        href="./style.css?v=6"
-    >
-
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+    <link rel="stylesheet" href="./style.css?v=7">
 </head>
 
 <body>
 
 <main class="app-shell">
 
-    <!-- HEADER -->
-
     <header class="hero">
-
-        <div class="eyebrow">
-            ARM WRESTLING TOOL
-        </div>
-
-        <h1>
-            ARM PYRAMID
-        </h1>
-
-        <p>
-            Build your game. One pull at a time.
-        </p>
-
+        <div class="eyebrow">ARM WRESTLING TOOL</div>
+        <h1>ARM PYRAMID</h1>
+        <p>Build your game. One pull at a time.</p>
     </header>
 
-
-    <!-- MODES -->
 
     <div class="mode-tabs">
 
@@ -92,14 +46,11 @@
     </div>
 
 
-    <!-- PRACTICE PANEL -->
-
     <section class="practice-panel">
 
         <div class="practice-top">
 
             <div>
-
                 <div class="section-kicker">
                     PRACTICE PULL MODE
                 </div>
@@ -107,22 +58,17 @@
                 <h2>
                     Let the pyramid decide.
                 </h2>
-
             </div>
 
-
             <div class="ready-pill">
-
                 <span class="ready-dot"></span>
-
                 READY
-
             </div>
 
         </div>
 
 
-        <!-- PRACTICE SETTINGS -->
+        <!-- SETTINGS -->
 
         <section class="settings-card">
 
@@ -139,19 +85,13 @@
                     </span>
 
                     <div>
-
-                        <strong>
-                            PRACTICE SETTINGS
-                        </strong>
-
+                        <strong>PRACTICE SETTINGS</strong>
                         <span id="settingsSummary">
                             ALL • 10 PULLS
                         </span>
-
                     </div>
 
                 </div>
-
 
                 <span
                     class="settings-chevron"
@@ -168,14 +108,11 @@
                 id="settingsContent"
             >
 
-                <!-- PULL POOL -->
-
                 <div class="setting-block">
 
                     <div class="setting-label">
                         PULL POOL
                     </div>
-
 
                     <div class="segmented-control">
 
@@ -208,14 +145,11 @@
                 </div>
 
 
-                <!-- SESSION LENGTH -->
-
                 <div class="setting-block">
 
                     <div class="setting-label">
                         SESSION LENGTH
                     </div>
-
 
                     <div class="segmented-control session-control">
 
@@ -256,22 +190,14 @@
                 </div>
 
 
-                <!-- REPEAT -->
-
                 <div class="repeat-row">
 
                     <div>
-
-                        <strong>
-                            AVOID CONSECUTIVE REPEATS
-                        </strong>
-
+                        <strong>AVOID CONSECUTIVE REPEATS</strong>
                         <span>
                             The same technique won't appear twice in a row.
                         </span>
-
                     </div>
-
 
                     <label class="switch">
 
@@ -288,8 +214,6 @@
                 </div>
 
 
-                <!-- TECHNIQUES -->
-
                 <div class="technique-filter">
 
                     <div class="technique-filter-header">
@@ -297,7 +221,6 @@
                         <div class="setting-label">
                             TECHNIQUES
                         </div>
-
 
                         <div class="filter-actions">
 
@@ -332,7 +255,6 @@
                             <span>High Hook</span>
                         </button>
 
-
                         <button
                             class="technique-chip selected"
                             data-filter-technique="Hook & Drag"
@@ -342,7 +264,6 @@
                             <strong>H2</strong>
                             <span>Hook & Drag</span>
                         </button>
-
 
                         <button
                             class="technique-chip selected"
@@ -354,7 +275,6 @@
                             <span>Hook & Drive</span>
                         </button>
 
-
                         <button
                             class="technique-chip selected"
                             data-filter-technique="Shoulder Press"
@@ -364,7 +284,6 @@
                             <strong>P1</strong>
                             <span>Shoulder Press</span>
                         </button>
-
 
                         <button
                             class="technique-chip selected"
@@ -376,7 +295,6 @@
                             <span>Flop Press</span>
                         </button>
 
-
                         <button
                             class="technique-chip selected"
                             data-filter-technique="Posting Toproll"
@@ -386,7 +304,6 @@
                             <strong>T1</strong>
                             <span>Posting</span>
                         </button>
-
 
                         <button
                             class="technique-chip selected"
@@ -398,7 +315,6 @@
                             <span>Sweeping</span>
                         </button>
 
-
                         <button
                             class="technique-chip selected"
                             data-filter-technique="Low-Hand Toproll"
@@ -409,7 +325,6 @@
                             <span>Low-Hand</span>
                         </button>
 
-
                         <button
                             class="technique-chip selected"
                             data-filter-technique="Open Toproll"
@@ -419,7 +334,6 @@
                             <strong>T4</strong>
                             <span>Open Toproll</span>
                         </button>
-
 
                         <button
                             class="technique-chip selected"
@@ -457,19 +371,12 @@
                 viewBox="0 0 800 560"
                 preserveAspectRatio="none"
             >
-
-                <line x1="400" y1="35" x2="90" y2="520" />
-
-                <line x1="400" y1="35" x2="710" y2="520" />
-
-                <line x1="90" y1="520" x2="710" y2="520" />
-
-                <line x1="400" y1="35" x2="400" y2="520" />
-
+                <line x1="400" y1="35" x2="90" y2="520"/>
+                <line x1="400" y1="35" x2="710" y2="520"/>
+                <line x1="90" y1="520" x2="710" y2="520"/>
+                <line x1="400" y1="35" x2="400" y2="520"/>
             </svg>
 
-
-            <!-- H1 -->
 
             <div
                 class="technique-node apex"
@@ -477,21 +384,11 @@
                 data-code="H1"
                 data-side="inside"
             >
-
-                <div class="technique-name">
-                    HIGH HOOK
-                </div>
-
-                <div class="technique-code red">
-                    H1
-                </div>
-
+                <div class="technique-name">HIGH HOOK</div>
+                <div class="technique-code red">H1</div>
                 <div class="node-dot"></div>
-
             </div>
 
-
-            <!-- H2 -->
 
             <div
                 class="technique-node h2"
@@ -499,25 +396,14 @@
                 data-code="H2"
                 data-side="inside"
             >
-
                 <div class="node-copy left-copy">
-
-                    <div class="technique-name">
-                        HOOK & DRAG
-                    </div>
-
-                    <div class="technique-code red">
-                        H2
-                    </div>
-
+                    <div class="technique-name">HOOK & DRAG</div>
+                    <div class="technique-code red">H2</div>
                 </div>
 
                 <div class="node-dot"></div>
-
             </div>
 
-
-            <!-- H3 -->
 
             <div
                 class="technique-node h3"
@@ -525,25 +411,14 @@
                 data-code="H3"
                 data-side="inside"
             >
-
                 <div class="node-copy left-copy">
-
-                    <div class="technique-name">
-                        HOOK & DRIVE
-                    </div>
-
-                    <div class="technique-code red">
-                        H3
-                    </div>
-
+                    <div class="technique-name">HOOK & DRIVE</div>
+                    <div class="technique-code red">H3</div>
                 </div>
 
                 <div class="node-dot"></div>
-
             </div>
 
-
-            <!-- P1 -->
 
             <div
                 class="technique-node p1"
@@ -551,25 +426,14 @@
                 data-code="P1"
                 data-side="inside"
             >
-
                 <div class="node-copy left-copy">
-
-                    <div class="technique-name">
-                        SHOULDER PRESS
-                    </div>
-
-                    <div class="technique-code red">
-                        P1
-                    </div>
-
+                    <div class="technique-name">SHOULDER PRESS</div>
+                    <div class="technique-code red">P1</div>
                 </div>
 
                 <div class="node-dot"></div>
-
             </div>
 
-
-            <!-- P2 -->
 
             <div
                 class="technique-node p2"
@@ -577,25 +441,14 @@
                 data-code="P2"
                 data-side="inside"
             >
-
                 <div class="node-copy left-copy">
-
-                    <div class="technique-name">
-                        FLOP PRESS
-                    </div>
-
-                    <div class="technique-code red">
-                        P2
-                    </div>
-
+                    <div class="technique-name">FLOP PRESS</div>
+                    <div class="technique-code red">P2</div>
                 </div>
 
                 <div class="node-dot"></div>
-
             </div>
 
-
-            <!-- T1 -->
 
             <div
                 class="technique-node t1"
@@ -603,25 +456,14 @@
                 data-code="T1"
                 data-side="outside"
             >
-
                 <div class="node-dot"></div>
 
                 <div class="node-copy">
-
-                    <div class="technique-name">
-                        POSTING TOPROLL
-                    </div>
-
-                    <div class="technique-code blue">
-                        T1
-                    </div>
-
+                    <div class="technique-name">POSTING TOPROLL</div>
+                    <div class="technique-code blue">T1</div>
                 </div>
-
             </div>
 
-
-            <!-- T2 -->
 
             <div
                 class="technique-node t2"
@@ -629,25 +471,14 @@
                 data-code="T2"
                 data-side="outside"
             >
-
                 <div class="node-dot"></div>
 
                 <div class="node-copy">
-
-                    <div class="technique-name">
-                        SWEEPING TOPROLL
-                    </div>
-
-                    <div class="technique-code blue">
-                        T2
-                    </div>
-
+                    <div class="technique-name">SWEEPING TOPROLL</div>
+                    <div class="technique-code blue">T2</div>
                 </div>
-
             </div>
 
-
-            <!-- T3 -->
 
             <div
                 class="technique-node t3"
@@ -655,25 +486,14 @@
                 data-code="T3"
                 data-side="outside"
             >
-
                 <div class="node-dot"></div>
 
                 <div class="node-copy">
-
-                    <div class="technique-name">
-                        LOW-HAND TOPROLL
-                    </div>
-
-                    <div class="technique-code blue">
-                        T3
-                    </div>
-
+                    <div class="technique-name">LOW-HAND TOPROLL</div>
+                    <div class="technique-code blue">T3</div>
                 </div>
-
             </div>
 
-
-            <!-- T4 -->
 
             <div
                 class="technique-node t4"
@@ -681,25 +501,14 @@
                 data-code="T4"
                 data-side="outside"
             >
-
                 <div class="node-dot"></div>
 
                 <div class="node-copy">
-
-                    <div class="technique-name">
-                        OPEN TOPROLL
-                    </div>
-
-                    <div class="technique-code blue">
-                        T4
-                    </div>
-
+                    <div class="technique-name">OPEN TOPROLL</div>
+                    <div class="technique-code blue">T4</div>
                 </div>
-
             </div>
 
-
-            <!-- KM -->
 
             <div
                 class="technique-node km"
@@ -707,21 +516,12 @@
                 data-code="KM"
                 data-side="outside"
             >
-
                 <div class="node-dot"></div>
 
                 <div class="node-copy">
-
-                    <div class="technique-name">
-                        KING'S MOVE
-                    </div>
-
-                    <div class="technique-code blue">
-                        KM
-                    </div>
-
+                    <div class="technique-name">KING'S MOVE</div>
+                    <div class="technique-code blue">KM</div>
                 </div>
-
             </div>
 
 
@@ -772,17 +572,57 @@
                 PRESS START TO BEGIN
             </div>
 
+
+            <!-- WIN / LOSS -->
+
+            <div
+                class="outcome-panel hidden"
+                id="outcomePanel"
+            >
+
+                <div class="outcome-label">
+                    HOW DID IT GO?
+                </div>
+
+                <div class="outcome-buttons">
+
+                    <button
+                        class="outcome-button win-button"
+                        id="winButton"
+                        type="button"
+                    >
+                        ✓ WIN
+                    </button>
+
+                    <button
+                        class="outcome-button loss-button"
+                        id="lossButton"
+                        type="button"
+                    >
+                        ✕ LOSS
+                    </button>
+
+                    <button
+                        class="outcome-button skip-button"
+                        id="skipButton"
+                        type="button"
+                    >
+                        SKIP
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
 
-
-        <!-- START BUTTON -->
 
         <button id="trainButton">
             ⚡ START PULL
         </button>
 
 
-        <!-- SHOULDER COMMITMENT -->
+        <!-- COMMITMENT -->
 
         <div class="commitment-card">
 
@@ -803,7 +643,6 @@
                     <div class="scale-track">
 
                         <div class="scale-left"></div>
-
                         <div class="scale-right"></div>
 
                         <div
@@ -815,21 +654,13 @@
 
 
                     <div class="scale-labels">
-
                         <span class="left-number">+3</span>
-
                         <span class="left-number">+2</span>
-
                         <span class="left-number">+1</span>
-
                         <span class="center-number">0</span>
-
                         <span class="right-number">-1</span>
-
                         <span class="right-number">-2</span>
-
                         <span class="right-number">-3</span>
-
                     </div>
 
                 </div>
@@ -844,9 +675,7 @@
 
             <div class="commitment-descriptions">
 
-                <div
-                    class="commitment-description inside-description"
-                >
+                <div class="commitment-description inside-description">
 
                     <strong>
                         MORE SHOULDER COMMITMENT
@@ -859,9 +688,7 @@
                 </div>
 
 
-                <div
-                    class="commitment-description outside-description"
-                >
+                <div class="commitment-description outside-description">
 
                     <strong>
                         MORE TOPROLL COMMITMENT
@@ -878,14 +705,13 @@
         </div>
 
 
-        <!-- SESSION HISTORY -->
+        <!-- ANALYTICS -->
 
         <section class="history-section">
 
             <div class="history-header">
 
                 <div>
-
                     <div class="history-kicker">
                         PRACTICE ANALYTICS
                     </div>
@@ -893,7 +719,6 @@
                     <h3>
                         Session History
                     </h3>
-
                 </div>
 
 
@@ -910,54 +735,38 @@
             <div class="stats-grid">
 
                 <div class="stat-card">
-
-                    <span>
-                        TOTAL PULLS
-                    </span>
-
-                    <strong id="totalPulls">
-                        0
-                    </strong>
-
+                    <span>TOTAL PULLS</span>
+                    <strong id="totalPulls">0</strong>
                 </div>
 
 
-                <div class="stat-card inside-stat">
-
-                    <span>
-                        INSIDE
-                    </span>
-
-                    <strong id="insidePulls">
-                        0
-                    </strong>
-
+                <div class="stat-card record-stat">
+                    <span>RECORD</span>
+                    <strong id="recordValue">0W–0L</strong>
                 </div>
 
 
-                <div class="stat-card outside-stat">
-
-                    <span>
-                        OUTSIDE
-                    </span>
-
-                    <strong id="outsidePulls">
-                        0
-                    </strong>
-
+                <div class="stat-card winrate-stat">
+                    <span>WIN RATE</span>
+                    <strong id="winRate">—</strong>
                 </div>
 
 
                 <div class="stat-card">
+                    <span>AVG. COMMITMENT</span>
+                    <strong id="averageCommitment">0</strong>
+                </div>
 
-                    <span>
-                        AVG. COMMITMENT
-                    </span>
 
-                    <strong id="averageCommitment">
-                        0
-                    </strong>
+                <div class="stat-card inside-stat">
+                    <span>INSIDE</span>
+                    <strong id="insidePulls">0</strong>
+                </div>
 
+
+                <div class="stat-card outside-stat">
+                    <span>OUTSIDE</span>
+                    <strong id="outsidePulls">0</strong>
                 </div>
 
             </div>
@@ -975,7 +784,7 @@
 </main>
 
 
-<script src="./script.js?v=6"></script>
+<script src="./script.js?v=7"></script>
 
 </body>
 
