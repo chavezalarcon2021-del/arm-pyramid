@@ -16,17 +16,83 @@ const techniqueOrder = [
 ];
 
 
+const techniqueMeta = {
+
+    "High Hook": {
+        code: "H1",
+        side: "inside"
+    },
+
+    "Hook & Drag": {
+        code: "H2",
+        side: "inside"
+    },
+
+    "Hook & Drive": {
+        code: "H3",
+        side: "inside"
+    },
+
+    "Shoulder Press": {
+        code: "P1",
+        side: "inside"
+    },
+
+    "Flop Press": {
+        code: "P2",
+        side: "inside"
+    },
+
+    "Posting Toproll": {
+        code: "T1",
+        side: "outside"
+    },
+
+    "Sweeping Toproll": {
+        code: "T2",
+        side: "outside"
+    },
+
+    "Low-Hand Toproll": {
+        code: "T3",
+        side: "outside"
+    },
+
+    "Open Toproll": {
+        code: "T4",
+        side: "outside"
+    },
+
+    "King's Move": {
+        code: "KM",
+        side: "outside"
+    }
+
+};
+
+
 const commitmentByTechnique = {
+
     "Flop Press": 3,
+
     "Shoulder Press": 3,
+
     "Hook & Drive": 2,
+
     "Hook & Drag": 1,
+
     "High Hook": 0,
+
     "Posting Toproll": -1,
+
     "Sweeping Toproll": -2,
+
     "Low-Hand Toproll": -2,
+
     "Open Toproll": -3,
+
     "King's Move": -3
+
 };
 
 
@@ -35,85 +101,297 @@ const commitmentByTechnique = {
 ========================= */
 
 const button =
-    document.getElementById("trainButton");
+    document.getElementById(
+        "trainButton"
+    );
 
 const techniqueText =
-    document.getElementById("technique");
+    document.getElementById(
+        "technique"
+    );
 
 const techniqueSide =
-    document.getElementById("techniqueSide");
+    document.getElementById(
+        "techniqueSide"
+    );
 
 const pullCounter =
-    document.getElementById("pullCounter");
+    document.getElementById(
+        "pullCounter"
+    );
 
 const sessionProgress =
-    document.getElementById("sessionProgress");
+    document.getElementById(
+        "sessionProgress"
+    );
 
 const commitmentIndicator =
-    document.getElementById("commitmentIndicator");
+    document.getElementById(
+        "commitmentIndicator"
+    );
+
+
+/* HISTORY */
 
 const historyList =
-    document.getElementById("historyList");
+    document.getElementById(
+        "historyList"
+    );
+
+const techniquePerformanceList =
+    document.getElementById(
+        "techniquePerformanceList"
+    );
+
+
+/* STATS */
 
 const totalPullsElement =
-    document.getElementById("totalPulls");
+    document.getElementById(
+        "totalPulls"
+    );
 
 const insidePullsElement =
-    document.getElementById("insidePulls");
+    document.getElementById(
+        "insidePulls"
+    );
 
 const outsidePullsElement =
-    document.getElementById("outsidePulls");
+    document.getElementById(
+        "outsidePulls"
+    );
 
 const averageCommitmentElement =
-    document.getElementById("averageCommitment");
+    document.getElementById(
+        "averageCommitment"
+    );
 
 const recordValueElement =
-    document.getElementById("recordValue");
+    document.getElementById(
+        "recordValue"
+    );
 
 const winRateElement =
-    document.getElementById("winRate");
+    document.getElementById(
+        "winRate"
+    );
+
+
+/* PERFORMANCE */
+
+const bestTechniqueElement =
+    document.getElementById(
+        "bestTechnique"
+    );
+
+const bestTechniqueDetailElement =
+    document.getElementById(
+        "bestTechniqueDetail"
+    );
+
+const weakestTechniqueElement =
+    document.getElementById(
+        "weakestTechnique"
+    );
+
+const weakestTechniqueDetailElement =
+    document.getElementById(
+        "weakestTechniqueDetail"
+    );
+
+const insideWinRateElement =
+    document.getElementById(
+        "insideWinRate"
+    );
+
+const insideRecordElement =
+    document.getElementById(
+        "insideRecord"
+    );
+
+const outsideWinRateElement =
+    document.getElementById(
+        "outsideWinRate"
+    );
+
+const outsideRecordElement =
+    document.getElementById(
+        "outsideRecord"
+    );
+
+
+/* SUMMARY */
+
+const sessionSummary =
+    document.getElementById(
+        "sessionSummary"
+    );
+
+const summarySubtitle =
+    document.getElementById(
+        "summarySubtitle"
+    );
+
+const summaryWinRate =
+    document.getElementById(
+        "summaryWinRate"
+    );
+
+const summaryRecord =
+    document.getElementById(
+        "summaryRecord"
+    );
+
+const summaryInside =
+    document.getElementById(
+        "summaryInside"
+    );
+
+const summaryInsideRecord =
+    document.getElementById(
+        "summaryInsideRecord"
+    );
+
+const summaryOutside =
+    document.getElementById(
+        "summaryOutside"
+    );
+
+const summaryOutsideRecord =
+    document.getElementById(
+        "summaryOutsideRecord"
+    );
+
+const summaryCommitment =
+    document.getElementById(
+        "summaryCommitment"
+    );
+
+const summaryBestTechnique =
+    document.getElementById(
+        "summaryBestTechnique"
+    );
+
+const summaryBestDetail =
+    document.getElementById(
+        "summaryBestDetail"
+    );
+
+const summaryWeakestTechnique =
+    document.getElementById(
+        "summaryWeakestTechnique"
+    );
+
+const summaryWeakestDetail =
+    document.getElementById(
+        "summaryWeakestDetail"
+    );
+
+const summaryMostPulled =
+    document.getElementById(
+        "summaryMostPulled"
+    );
+
+const summaryMostPulledDetail =
+    document.getElementById(
+        "summaryMostPulledDetail"
+    );
+
+const summaryTechniqueList =
+    document.getElementById(
+        "summaryTechniqueList"
+    );
+
+const newSessionButton =
+    document.getElementById(
+        "newSessionButton"
+    );
+
+
+/* SETTINGS */
 
 const clearHistoryButton =
-    document.getElementById("clearHistoryButton");
+    document.getElementById(
+        "clearHistoryButton"
+    );
 
 const settingsToggle =
-    document.getElementById("settingsToggle");
+    document.getElementById(
+        "settingsToggle"
+    );
 
 const settingsContent =
-    document.getElementById("settingsContent");
+    document.getElementById(
+        "settingsContent"
+    );
 
 const settingsChevron =
-    document.getElementById("settingsChevron");
+    document.getElementById(
+        "settingsChevron"
+    );
 
 const settingsSummary =
-    document.getElementById("settingsSummary");
+    document.getElementById(
+        "settingsSummary"
+    );
 
 const settingsWarning =
-    document.getElementById("settingsWarning");
+    document.getElementById(
+        "settingsWarning"
+    );
 
 const avoidRepeatsToggle =
-    document.getElementById("avoidRepeatsToggle");
+    document.getElementById(
+        "avoidRepeatsToggle"
+    );
 
 const enableAllTechniques =
-    document.getElementById("enableAllTechniques");
+    document.getElementById(
+        "enableAllTechniques"
+    );
 
 const disableAllTechniques =
-    document.getElementById("disableAllTechniques");
+    document.getElementById(
+        "disableAllTechniques"
+    );
 
 
 /* OUTCOME */
 
 const outcomePanel =
-    document.getElementById("outcomePanel");
+    document.getElementById(
+        "outcomePanel"
+    );
 
 const winButton =
-    document.getElementById("winButton");
+    document.getElementById(
+        "winButton"
+    );
 
 const lossButton =
-    document.getElementById("lossButton");
+    document.getElementById(
+        "lossButton"
+    );
 
 const skipButton =
-    document.getElementById("skipButton");
+    document.getElementById(
+        "skipButton"
+    );
+
+
+/* HEATMAP */
+
+const heatmapTitle =
+    document.getElementById(
+        "heatmapTitle"
+    );
+
+const heatmapTabs =
+    Array.from(
+        document.querySelectorAll(
+            ".heatmap-tab"
+        )
+    );
 
 
 const nodes =
@@ -150,10 +428,22 @@ const techniqueChips =
 ========================= */
 
 const defaultSettings = {
-    pool: "all",
-    sessionLength: 10,
-    avoidRepeats: true,
-    enabledTechniques: [...techniqueOrder]
+
+    pool:
+        "all",
+
+    sessionLength:
+        10,
+
+    avoidRepeats:
+        true,
+
+    enabledTechniques:
+        [...techniqueOrder],
+
+    heatmapMode:
+        "performance"
+
 };
 
 
@@ -172,16 +462,19 @@ function loadSettings() {
         if (!saved) {
 
             return {
+
                 ...defaultSettings,
-                enabledTechniques: [
-                    ...techniqueOrder
-                ]
+
+                enabledTechniques:
+                    [...techniqueOrder]
+
             };
 
         }
 
 
         return {
+
             pool:
                 saved.pool ||
                 "all",
@@ -206,7 +499,16 @@ function loadSettings() {
                         )
                 )
                 :
-                [...techniqueOrder]
+                [...techniqueOrder],
+
+            heatmapMode:
+                saved.heatmapMode ===
+                "frequency"
+                ?
+                "frequency"
+                :
+                "performance"
+
         };
 
     }
@@ -214,10 +516,12 @@ function loadSettings() {
     catch {
 
         return {
+
             ...defaultSettings,
-            enabledTechniques: [
-                ...techniqueOrder
-            ]
+
+            enabledTechniques:
+                [...techniqueOrder]
+
         };
 
     }
@@ -233,7 +537,9 @@ function saveSettings() {
 
     localStorage.setItem(
         "armPyramidSettings",
-        JSON.stringify(settings)
+        JSON.stringify(
+            settings
+        )
     );
 
 }
@@ -259,20 +565,11 @@ try {
 
 catch {
 
-    sessionHistory = [];
+    sessionHistory =
+        [];
 
 }
 
-
-/*
-    OLD PULLS:
-    If they don't have a win/loss result,
-    they become "unrated".
-
-    NEW PULL:
-    Starts with result = null until
-    WIN / LOSS / SKIP is selected.
-*/
 
 sessionHistory =
     sessionHistory.map(
@@ -289,9 +586,21 @@ sessionHistory =
 
 
             if (
+                result !== null &&
                 result !== "win" &&
                 result !== "loss" &&
-                result !== "skip"
+                result !== "skip" &&
+                result !== "unrated"
+            ) {
+
+                result =
+                    "unrated";
+
+            }
+
+
+            if (
+                result === undefined
             ) {
 
                 result =
@@ -301,6 +610,7 @@ sessionHistory =
 
 
             return {
+
                 ...pull,
 
                 number:
@@ -313,15 +623,44 @@ sessionHistory =
 
                 result:
                     result
+
             };
 
         }
     );
 
 
-let pulling = false;
+let pulling =
+    false;
 
-let pendingPullIndex = null;
+
+let pendingPullIndex =
+    null;
+
+
+for (
+    let i =
+        sessionHistory.length - 1;
+
+    i >= 0;
+
+    i--
+) {
+
+    if (
+        sessionHistory[i].result ===
+        null
+    ) {
+
+        pendingPullIndex =
+            i;
+
+        break;
+
+    }
+
+}
+
 
 let pullNumber =
     sessionHistory.length + 1;
@@ -358,13 +697,34 @@ function randomItem(array) {
 
 function formatCommitment(value) {
 
-    if (value > 0) {
+    if (
+        value > 0
+    ) {
 
         return `+${value}`;
 
     }
 
-    return String(value);
+
+    return String(
+        value
+    );
+
+}
+
+
+function formatRate(rate) {
+
+    if (
+        rate === null
+    ) {
+
+        return "—";
+
+    }
+
+
+    return `${Math.round(rate)}%`;
 
 }
 
@@ -386,10 +746,10 @@ function saveSession() {
 
 
 /* =========================
-   NODES
+   NODE STATES
 ========================= */
 
-function clearNodes() {
+function clearActiveNodes() {
 
     nodes.forEach(
         node => {
@@ -409,7 +769,7 @@ function highlightTechnique(
     techniqueName
 ) {
 
-    clearNodes();
+    clearActiveNodes();
 
 
     const node =
@@ -420,7 +780,9 @@ function highlightTechnique(
         );
 
 
-    if (node) {
+    if (
+        node
+    ) {
 
         node.classList.add(
             "active",
@@ -444,13 +806,17 @@ function getEligibleNodes() {
             const technique =
                 node.dataset.technique;
 
+
             const side =
                 node.dataset.side;
 
 
             if (
-                !settings.enabledTechniques
-                    .includes(technique)
+                !settings
+                .enabledTechniques
+                .includes(
+                    technique
+                )
             ) {
 
                 return false;
@@ -463,7 +829,10 @@ function getEligibleNodes() {
                 "inside"
             ) {
 
-                return side === "inside";
+                return (
+                    side ===
+                    "inside"
+                );
 
             }
 
@@ -473,7 +842,10 @@ function getEligibleNodes() {
                 "outside"
             ) {
 
-                return side === "outside";
+                return (
+                    side ===
+                    "outside"
+                );
 
             }
 
@@ -503,7 +875,8 @@ function isUnlimited() {
 function hasPendingResult() {
 
     return (
-        pendingPullIndex !== null
+        pendingPullIndex !==
+        null
     );
 
 }
@@ -511,7 +884,9 @@ function hasPendingResult() {
 
 function isSessionComplete() {
 
-    if (isUnlimited()) {
+    if (
+        isUnlimited()
+    ) {
 
         return false;
 
@@ -520,7 +895,9 @@ function isSessionComplete() {
 
     return (
         sessionHistory.length >=
-        Number(settings.sessionLength)
+        Number(
+            settings.sessionLength
+        )
         &&
         !hasPendingResult()
     );
@@ -532,51 +909,77 @@ function isSessionComplete() {
    COMMITMENT
 ========================= */
 
-function setCommitment(value) {
+function setCommitment(
+    value
+) {
 
     const positions = {
+
         3: 0,
+
         2: 16.67,
+
         1: 33.33,
+
         0: 50,
+
         "-1": 66.67,
+
         "-2": 83.33,
+
         "-3": 100
+
     };
 
 
-    commitmentIndicator.style.left =
-        positions[value] + "%";
+    commitmentIndicator
+        .style
+        .left =
+        positions[value]
+        +
+        "%";
 
 
-    commitmentIndicator.classList.remove(
-        "inside",
-        "outside",
-        "neutral"
-    );
-
-
-    if (value > 0) {
-
-        commitmentIndicator.classList.add(
-            "inside"
+    commitmentIndicator
+        .classList
+        .remove(
+            "inside",
+            "outside",
+            "neutral"
         );
+
+
+    if (
+        value > 0
+    ) {
+
+        commitmentIndicator
+            .classList
+            .add(
+                "inside"
+            );
 
     }
 
-    else if (value < 0) {
+    else if (
+        value < 0
+    ) {
 
-        commitmentIndicator.classList.add(
-            "outside"
-        );
+        commitmentIndicator
+            .classList
+            .add(
+                "outside"
+            );
 
     }
 
     else {
 
-        commitmentIndicator.classList.add(
-            "neutral"
-        );
+        commitmentIndicator
+            .classList
+            .add(
+                "neutral"
+            );
 
     }
 
@@ -584,7 +987,466 @@ function setCommitment(value) {
 
 
 /* =========================
-   SESSION PROGRESS
+   METRICS
+========================= */
+
+function getTechniqueMetrics(
+    techniqueName
+) {
+
+    const pulls =
+        sessionHistory.filter(
+            pull =>
+                pull.technique ===
+                techniqueName
+        );
+
+
+    const wins =
+        pulls.filter(
+            pull =>
+                pull.result ===
+                "win"
+        ).length;
+
+
+    const losses =
+        pulls.filter(
+            pull =>
+                pull.result ===
+                "loss"
+        ).length;
+
+
+    const rated =
+        wins +
+        losses;
+
+
+    const rate =
+        rated > 0
+        ?
+        (
+            wins /
+            rated
+        ) * 100
+        :
+        null;
+
+
+    return {
+
+        technique:
+            techniqueName,
+
+        count:
+            pulls.length,
+
+        wins:
+            wins,
+
+        losses:
+            losses,
+
+        rated:
+            rated,
+
+        rate:
+            rate,
+
+        code:
+            techniqueMeta[
+                techniqueName
+            ].code,
+
+        side:
+            techniqueMeta[
+                techniqueName
+            ].side
+
+    };
+
+}
+
+
+function getSideMetrics(side) {
+
+    const pulls =
+        sessionHistory.filter(
+            pull =>
+                pull.side ===
+                side
+        );
+
+
+    const wins =
+        pulls.filter(
+            pull =>
+                pull.result ===
+                "win"
+        ).length;
+
+
+    const losses =
+        pulls.filter(
+            pull =>
+                pull.result ===
+                "loss"
+        ).length;
+
+
+    const rated =
+        wins +
+        losses;
+
+
+    const rate =
+        rated > 0
+        ?
+        (
+            wins /
+            rated
+        ) * 100
+        :
+        null;
+
+
+    return {
+
+        count:
+            pulls.length,
+
+        wins,
+        losses,
+        rated,
+        rate
+
+    };
+
+}
+
+
+function getOverallMetrics() {
+
+    const total =
+        sessionHistory.length;
+
+
+    const wins =
+        sessionHistory.filter(
+            pull =>
+                pull.result ===
+                "win"
+        ).length;
+
+
+    const losses =
+        sessionHistory.filter(
+            pull =>
+                pull.result ===
+                "loss"
+        ).length;
+
+
+    const rated =
+        wins +
+        losses;
+
+
+    const rate =
+        rated > 0
+        ?
+        (
+            wins /
+            rated
+        ) * 100
+        :
+        null;
+
+
+    let averageCommitment =
+        0;
+
+
+    if (
+        total > 0
+    ) {
+
+        averageCommitment =
+            sessionHistory.reduce(
+                (sum, pull) =>
+                    sum +
+                    pull.commitment,
+                0
+            ) /
+            total;
+
+    }
+
+
+    return {
+
+        total,
+        wins,
+        losses,
+        rated,
+        rate,
+        averageCommitment
+
+    };
+
+}
+
+
+/* =========================
+   BEST / WEAKEST
+========================= */
+
+function getPerformanceExtremes() {
+
+    const metrics =
+        techniqueOrder
+        .map(
+            getTechniqueMetrics
+        )
+        .filter(
+            metric =>
+                metric.rated > 0
+        );
+
+
+    if (
+        metrics.length ===
+        0
+    ) {
+
+        return {
+
+            best:
+                null,
+
+            weakest:
+                null
+
+        };
+
+    }
+
+
+    const best =
+        [...metrics]
+        .sort(
+            (a,b) => {
+
+                if (
+                    b.rate !==
+                    a.rate
+                ) {
+
+                    return (
+                        b.rate -
+                        a.rate
+                    );
+
+                }
+
+
+                return (
+                    b.rated -
+                    a.rated
+                );
+
+            }
+        )[0];
+
+
+    const weakest =
+        [...metrics]
+        .sort(
+            (a,b) => {
+
+                if (
+                    a.rate !==
+                    b.rate
+                ) {
+
+                    return (
+                        a.rate -
+                        b.rate
+                    );
+
+                }
+
+
+                return (
+                    b.rated -
+                    a.rated
+                );
+
+            }
+        )[0];
+
+
+    return {
+
+        best,
+        weakest
+
+    };
+
+}
+
+
+/* =========================
+   HEATMAP
+========================= */
+
+function updateHeatmap() {
+
+    const allMetrics =
+        techniqueOrder.map(
+            getTechniqueMetrics
+        );
+
+
+    const maxFrequency =
+        Math.max(
+            0,
+            ...allMetrics.map(
+                metric =>
+                    metric.count
+            )
+        );
+
+
+    nodes.forEach(
+        node => {
+
+            const metric =
+                getTechniqueMetrics(
+                    node.dataset.technique
+                );
+
+
+            let intensity =
+                0;
+
+
+            if (
+                settings.heatmapMode ===
+                "frequency"
+            ) {
+
+                if (
+                    maxFrequency > 0
+                ) {
+
+                    intensity =
+                        metric.count /
+                        maxFrequency;
+
+                }
+
+            }
+
+            else {
+
+                if (
+                    metric.rate !==
+                    null
+                ) {
+
+                    intensity =
+                        metric.rate /
+                        100;
+
+                }
+
+            }
+
+
+            if (
+                intensity <= 0
+            ) {
+
+                node.classList.remove(
+                    "heatmap-active"
+                );
+
+
+                node.style.removeProperty(
+                    "--heat-alpha"
+                );
+
+
+                node.style.removeProperty(
+                    "--heat-scale"
+                );
+
+
+                return;
+
+            }
+
+
+            const alpha =
+                0.18 +
+                intensity *
+                0.72;
+
+
+            const scale =
+                1 +
+                intensity *
+                0.16;
+
+
+            node.classList.add(
+                "heatmap-active"
+            );
+
+
+            node.style.setProperty(
+                "--heat-alpha",
+                alpha.toFixed(2)
+            );
+
+
+            node.style.setProperty(
+                "--heat-scale",
+                scale.toFixed(2)
+            );
+
+        }
+    );
+
+
+    heatmapTabs.forEach(
+        tab => {
+
+            tab.classList.toggle(
+                "active",
+                tab.dataset.heatmapMode ===
+                settings.heatmapMode
+            );
+
+        }
+    );
+
+
+    heatmapTitle.textContent =
+        settings.heatmapMode ===
+        "performance"
+        ?
+        "PERFORMANCE"
+        :
+        "FREQUENCY";
+
+}
+
+
+/* =========================
+   PROGRESS
 ========================= */
 
 function updateSessionProgress() {
@@ -593,7 +1455,9 @@ function updateSessionProgress() {
         sessionHistory.length;
 
 
-    if (isUnlimited()) {
+    if (
+        isUnlimited()
+    ) {
 
         sessionProgress.textContent =
             `${current} / ∞`;
@@ -617,7 +1481,7 @@ function updateSessionProgress() {
 
 
 /* =========================
-   OUTCOME UI
+   OUTCOME
 ========================= */
 
 function showOutcomePanel() {
@@ -639,7 +1503,7 @@ function hideOutcomePanel() {
 
 
 /* =========================
-   START BUTTON STATE
+   BUTTON STATE
 ========================= */
 
 function updatePullButton() {
@@ -655,81 +1519,95 @@ function updatePullButton() {
 
 
     if (
-        eligible.length === 0
+        eligible.length ===
+        0
     ) {
 
-        button.disabled = true;
+        button.disabled =
+            true;
+
 
         button.textContent =
             "⚠ SELECT A TECHNIQUE";
 
+
         return;
 
     }
 
 
-    if (pulling) {
+    if (
+        pulling
+    ) {
 
-        button.disabled = true;
+        button.disabled =
+            true;
+
 
         button.textContent =
             "PULLING...";
 
+
         return;
 
     }
 
 
-    if (hasPendingResult()) {
+    if (
+        hasPendingResult()
+    ) {
 
-        button.disabled = true;
+        button.disabled =
+            true;
+
 
         button.classList.add(
             "awaiting-result"
         );
 
+
         button.textContent =
             "RATE THIS PULL ↓";
+
 
         return;
 
     }
 
 
-    if (isSessionComplete()) {
+    if (
+        isSessionComplete()
+    ) {
 
-        button.disabled = true;
+        button.disabled =
+            true;
+
 
         button.classList.add(
             "session-complete"
         );
 
+
         button.textContent =
             "✓ SESSION COMPLETE";
+
 
         return;
 
     }
 
 
-    button.disabled = false;
+    button.disabled =
+        false;
 
 
-    if (
-        sessionHistory.length === 0
-    ) {
-
-        button.textContent =
-            "⚡ START PULL";
-
-    }
-
-    else {
-
-        button.textContent =
-            "↻ PULL AGAIN";
-
-    }
+    button.textContent =
+        sessionHistory.length ===
+        0
+        ?
+        "⚡ START PULL"
+        :
+        "↻ PULL AGAIN";
 
 }
 
@@ -756,13 +1634,9 @@ function updateSettingsUI() {
     lengthButtons.forEach(
         lengthButton => {
 
-            const value =
-                lengthButton.dataset.length;
-
-
             lengthButton.classList.toggle(
                 "active",
-                value ===
+                lengthButton.dataset.length ===
                 String(
                     settings.sessionLength
                 )
@@ -786,36 +1660,43 @@ function updateSettingsUI() {
             const technique =
                 chip.dataset.filterTechnique;
 
+
             const side =
                 chip.dataset.filterSide;
 
 
             chip.classList.toggle(
                 "selected",
-                settings.enabledTechniques
-                    .includes(technique)
+                settings.enabledTechniques.includes(
+                    technique
+                )
             );
 
 
-            let outsidePool = false;
+            let outsidePool =
+                false;
 
 
             if (
-                settings.pool === "inside"
+                settings.pool ===
+                "inside"
             ) {
 
                 outsidePool =
-                    side !== "inside";
+                    side !==
+                    "inside";
 
             }
 
 
             if (
-                settings.pool === "outside"
+                settings.pool ===
+                "outside"
             ) {
 
                 outsidePool =
-                    side !== "outside";
+                    side !==
+                    "outside";
 
             }
 
@@ -844,9 +1725,16 @@ function updateSettingsUI() {
 
 
     const poolName = {
-        all: "ALL",
-        inside: "INSIDE",
-        outside: "OUTSIDE"
+
+        all:
+            "ALL",
+
+        inside:
+            "INSIDE",
+
+        outside:
+            "OUTSIDE"
+
     }[
         settings.pool
     ];
@@ -866,7 +1754,8 @@ function updateSettingsUI() {
 
     settingsWarning.classList.toggle(
         "hidden",
-        eligibleNodes.length !== 0
+        eligibleNodes.length !==
+        0
     );
 
 
@@ -883,114 +1772,526 @@ function updateSettingsUI() {
 
 function updateStats() {
 
-    const total =
-        sessionHistory.length;
+    const overall =
+        getOverallMetrics();
 
 
     const inside =
-        sessionHistory.filter(
-            pull =>
-                pull.side ===
-                "inside"
-        ).length;
+        getSideMetrics(
+            "inside"
+        );
 
 
     const outside =
-        sessionHistory.filter(
-            pull =>
-                pull.side ===
-                "outside"
-        ).length;
+        getSideMetrics(
+            "outside"
+        );
 
 
-    const wins =
-        sessionHistory.filter(
-            pull =>
-                pull.result ===
-                "win"
-        ).length;
+    totalPullsElement.textContent =
+        overall.total;
 
 
-    const losses =
-        sessionHistory.filter(
-            pull =>
-                pull.result ===
-                "loss"
-        ).length;
+    insidePullsElement.textContent =
+        inside.count;
 
 
-    const ratedPulls =
-        wins + losses;
+    outsidePullsElement.textContent =
+        outside.count;
 
 
-    let average = 0;
+    recordValueElement.textContent =
+        `${overall.wins}W–${overall.losses}L`;
 
 
-    if (total > 0) {
-
-        const sum =
-            sessionHistory.reduce(
-                (
-                    currentTotal,
-                    pull
-                ) =>
-                    currentTotal +
-                    pull.commitment,
-                0
-            );
+    winRateElement.textContent =
+        formatRate(
+            overall.rate
+        );
 
 
-        average =
-            sum / total;
+    averageCommitmentElement.textContent =
+        overall.averageCommitment > 0
+        ?
+        `+${overall.averageCommitment.toFixed(1)}`
+        :
+        overall.averageCommitment.toFixed(1);
+
+}
+
+
+/* =========================
+   HIGHLIGHTS
+========================= */
+
+function updatePerformanceHighlights() {
+
+    const {
+        best,
+        weakest
+    } =
+        getPerformanceExtremes();
+
+
+    if (
+        best
+    ) {
+
+        bestTechniqueElement.textContent =
+            `${best.code} · ${best.technique}`;
+
+
+        bestTechniqueDetailElement.textContent =
+            `${best.wins}W–${best.losses}L · ${Math.round(best.rate)}%`;
+
+    }
+
+    else {
+
+        bestTechniqueElement.textContent =
+            "—";
+
+
+        bestTechniqueDetailElement.textContent =
+            "NO RATED PULLS";
 
     }
 
 
-    let winRateText = "—";
+    if (
+        weakest
+    ) {
+
+        weakestTechniqueElement.textContent =
+            `${weakest.code} · ${weakest.technique}`;
 
 
-    if (ratedPulls > 0) {
+        weakestTechniqueDetailElement.textContent =
+            `${weakest.wins}W–${weakest.losses}L · ${Math.round(weakest.rate)}%`;
 
-        const winRate =
+    }
+
+    else {
+
+        weakestTechniqueElement.textContent =
+            "—";
+
+
+        weakestTechniqueDetailElement.textContent =
+            "NO RATED PULLS";
+
+    }
+
+
+    const inside =
+        getSideMetrics(
+            "inside"
+        );
+
+
+    const outside =
+        getSideMetrics(
+            "outside"
+        );
+
+
+    insideWinRateElement.textContent =
+        formatRate(
+            inside.rate
+        );
+
+
+    insideRecordElement.textContent =
+        `${inside.wins}W–${inside.losses}L`;
+
+
+    outsideWinRateElement.textContent =
+        formatRate(
+            outside.rate
+        );
+
+
+    outsideRecordElement.textContent =
+        `${outside.wins}W–${outside.losses}L`;
+
+}
+
+
+/* =========================
+   TECHNIQUE BREAKDOWN
+========================= */
+
+function renderTechniquePerformance() {
+
+    techniquePerformanceList.innerHTML =
+        techniqueOrder
+        .map(
+            techniqueName => {
+
+                const metric =
+                    getTechniqueMetrics(
+                        techniqueName
+                    );
+
+
+                const width =
+                    metric.rate ===
+                    null
+                    ?
+                    0
+                    :
+                    metric.rate;
+
+
+                return `
+
+                    <div class="technique-performance-row">
+
+                        <div
+                            class="
+                                performance-code
+                                ${metric.side}
+                            "
+                        >
+                            ${metric.code}
+                        </div>
+
+
+                        <div class="performance-name">
+
+                            <strong>
+                                ${metric.technique}
+                            </strong>
+
+                            <span>
+                                ${metric.count} PULL${metric.count === 1 ? "" : "S"}
+                                ·
+                                ${metric.wins}W–${metric.losses}L
+                            </span>
+
+                        </div>
+
+
+                        <div class="performance-bar-area">
+
+                            <div class="performance-bar">
+
+                                <div
+                                    class="
+                                        performance-bar-fill
+                                        ${metric.side}
+                                    "
+                                    style="
+                                        width:${width}%;
+                                    "
+                                ></div>
+
+                            </div>
+
+                            <div class="performance-bar-label">
+
+                                ${
+                                    metric.rated > 0
+                                    ?
+                                    `${metric.rated} RATED`
+                                    :
+                                    "NO RATED PULLS"
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="
+                                performance-rate
+                                ${metric.rate === null ? "no-data" : ""}
+                            "
+                        >
+                            ${formatRate(metric.rate)}
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =========================
+   SESSION SUMMARY
+========================= */
+
+function renderSessionSummary() {
+
+    if (
+        !isSessionComplete()
+    ) {
+
+        sessionSummary.classList.add(
+            "hidden"
+        );
+
+
+        return;
+
+    }
+
+
+    const overall =
+        getOverallMetrics();
+
+
+    const inside =
+        getSideMetrics(
+            "inside"
+        );
+
+
+    const outside =
+        getSideMetrics(
+            "outside"
+        );
+
+
+    const {
+        best,
+        weakest
+    } =
+        getPerformanceExtremes();
+
+
+    const techniqueMetrics =
+        techniqueOrder.map(
+            getTechniqueMetrics
+        );
+
+
+    const mostPulled =
+        [...techniqueMetrics]
+        .sort(
+            (a,b) =>
+                b.count -
+                a.count
+        )[0];
+
+
+    summarySubtitle.textContent =
+        `${overall.total} pulls completed`;
+
+
+    summaryWinRate.textContent =
+        formatRate(
+            overall.rate
+        );
+
+
+    summaryRecord.textContent =
+        `${overall.wins}W–${overall.losses}L`;
+
+
+    summaryInside.textContent =
+        formatRate(
+            inside.rate
+        );
+
+
+    summaryInsideRecord.textContent =
+        `${inside.wins}W–${inside.losses}L`;
+
+
+    summaryOutside.textContent =
+        formatRate(
+            outside.rate
+        );
+
+
+    summaryOutsideRecord.textContent =
+        `${outside.wins}W–${outside.losses}L`;
+
+
+    summaryCommitment.textContent =
+        overall.averageCommitment > 0
+        ?
+        `+${overall.averageCommitment.toFixed(1)}`
+        :
+        overall.averageCommitment.toFixed(1);
+
+
+    if (
+        best
+    ) {
+
+        summaryBestTechnique.textContent =
+            `${best.code} · ${best.technique}`;
+
+
+        summaryBestDetail.textContent =
+            `${best.wins}W–${best.losses}L · ${Math.round(best.rate)}% WIN RATE`;
+
+    }
+
+    else {
+
+        summaryBestTechnique.textContent =
+            "—";
+
+
+        summaryBestDetail.textContent =
+            "NO RATED PULLS";
+
+    }
+
+
+    if (
+        weakest
+    ) {
+
+        summaryWeakestTechnique.textContent =
+            `${weakest.code} · ${weakest.technique}`;
+
+
+        summaryWeakestDetail.textContent =
+            `${weakest.wins}W–${weakest.losses}L · ${Math.round(weakest.rate)}% WIN RATE`;
+
+    }
+
+    else {
+
+        summaryWeakestTechnique.textContent =
+            "—";
+
+
+        summaryWeakestDetail.textContent =
+            "NO RATED PULLS";
+
+    }
+
+
+    if (
+        mostPulled &&
+        mostPulled.count > 0
+    ) {
+
+        const percentage =
             (
-                wins /
-                ratedPulls
+                mostPulled.count /
+                overall.total
             ) *
             100;
 
 
-        winRateText =
-            `${Math.round(winRate)}%`;
+        summaryMostPulled.textContent =
+            `${mostPulled.code} · ${mostPulled.technique}`;
+
+
+        summaryMostPulledDetail.textContent =
+            `${mostPulled.count} PULL${mostPulled.count === 1 ? "" : "S"} · ${Math.round(percentage)}% OF SESSION`;
+
+    }
+
+    else {
+
+        summaryMostPulled.textContent =
+            "—";
+
+
+        summaryMostPulledDetail.textContent =
+            "NO DATA";
 
     }
 
 
-    totalPullsElement.textContent =
-        total;
+    const maxCount =
+        Math.max(
+            1,
+            ...techniqueMetrics.map(
+                metric =>
+                    metric.count
+            )
+        );
 
 
-    insidePullsElement.textContent =
-        inside;
+    summaryTechniqueList.innerHTML =
+        techniqueMetrics
+        .map(
+            metric => {
+
+                const percent =
+                    overall.total > 0
+                    ?
+                    (
+                        metric.count /
+                        overall.total
+                    ) *
+                    100
+                    :
+                    0;
 
 
-    outsidePullsElement.textContent =
-        outside;
+                const barWidth =
+                    (
+                        metric.count /
+                        maxCount
+                    ) *
+                    100;
 
 
-    recordValueElement.textContent =
-        `${wins}W–${losses}L`;
+                return `
+
+                    <div class="summary-technique-row">
+
+                        <div
+                            class="
+                                summary-technique-code
+                                ${metric.side}
+                            "
+                        >
+                            ${metric.code}
+                        </div>
 
 
-    winRateElement.textContent =
-        winRateText;
+                        <div class="summary-technique-name">
+                            ${metric.technique}
+                        </div>
 
 
-    averageCommitmentElement.textContent =
-        average > 0
-        ?
-        `+${average.toFixed(1)}`
-        :
-        average.toFixed(1);
+                        <div class="summary-frequency-track">
+
+                            <div
+                                class="
+                                    summary-frequency-fill
+                                    ${metric.side}
+                                "
+                                style="
+                                    width:${barWidth}%;
+                                "
+                            ></div>
+
+                        </div>
+
+
+                        <div class="summary-technique-percent">
+                            ${Math.round(percent)}%
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+
+    sessionSummary.classList.remove(
+        "hidden"
+    );
 
 }
 
@@ -999,25 +2300,46 @@ function updateStats() {
    HISTORY
 ========================= */
 
-function getResultLabel(result) {
+function getResultLabel(
+    result
+) {
 
-    if (result === "win") {
+    if (
+        result ===
+        "win"
+    ) {
 
         return "✓ WIN";
 
     }
 
 
-    if (result === "loss") {
+    if (
+        result ===
+        "loss"
+    ) {
 
         return "✕ LOSS";
 
     }
 
 
-    if (result === "skip") {
+    if (
+        result ===
+        "skip"
+    ) {
 
         return "SKIP";
+
+    }
+
+
+    if (
+        result ===
+        null
+    ) {
+
+        return "RATE";
 
     }
 
@@ -1047,146 +2369,152 @@ function renderHistory() {
 
         `;
 
+    }
 
-        updateStats();
+    else {
 
-        updateSessionProgress();
+        const recentPulls =
+            [...sessionHistory]
+            .reverse()
+            .slice(
+                0,
+                10
+            );
 
-        updatePullButton();
 
-        return;
+        historyList.innerHTML =
+            recentPulls
+            .map(
+                pull => {
+
+                    let commitmentClass =
+                        "neutral";
+
+
+                    if (
+                        pull.commitment > 0
+                    ) {
+
+                        commitmentClass =
+                            "positive";
+
+                    }
+
+
+                    if (
+                        pull.commitment < 0
+                    ) {
+
+                        commitmentClass =
+                            "negative";
+
+                    }
+
+
+                    const resultClass =
+                        pull.result ===
+                        null
+                        ?
+                        "unrated"
+                        :
+                        pull.result;
+
+
+                    return `
+
+                        <div class="history-item">
+
+                            <div class="history-number">
+
+                                #${String(
+                                    pull.number
+                                ).padStart(
+                                    2,
+                                    "0"
+                                )}
+
+                            </div>
+
+
+                            <div class="history-technique">
+
+                                <strong>
+                                    ${pull.technique}
+                                </strong>
+
+                                <span>
+
+                                    ${
+                                        pull.side ===
+                                        "inside"
+                                        ?
+                                        "INSIDE GAME"
+                                        :
+                                        "OUTSIDE GAME"
+                                    }
+
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    history-code
+                                    ${pull.side}
+                                "
+                            >
+                                ${pull.code}
+                            </div>
+
+
+                            <div
+                                class="
+                                    history-commitment
+                                    ${commitmentClass}
+                                "
+                            >
+                                ${formatCommitment(
+                                    pull.commitment
+                                )}
+                            </div>
+
+
+                            <div
+                                class="
+                                    history-result
+                                    ${resultClass}
+                                "
+                            >
+                                ${getResultLabel(
+                                    pull.result
+                                )}
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
 
     }
 
 
-    const recentPulls =
-        [...sessionHistory]
-        .reverse()
-        .slice(0,10);
-
-
-    historyList.innerHTML =
-        recentPulls
-        .map(
-            pull => {
-
-                let commitmentClass =
-                    "neutral";
-
-
-                if (
-                    pull.commitment > 0
-                ) {
-
-                    commitmentClass =
-                        "positive";
-
-                }
-
-
-                if (
-                    pull.commitment < 0
-                ) {
-
-                    commitmentClass =
-                        "negative";
-
-                }
-
-
-                const resultClass =
-                    pull.result === null
-                    ?
-                    "unrated"
-                    :
-                    pull.result;
-
-
-                return `
-
-                    <div class="history-item">
-
-                        <div class="history-number">
-
-                            #${String(
-                                pull.number
-                            ).padStart(
-                                2,
-                                "0"
-                            )}
-
-                        </div>
-
-
-                        <div class="history-technique">
-
-                            <strong>
-                                ${pull.technique}
-                            </strong>
-
-                            <span>
-
-                                ${
-                                    pull.side ===
-                                    "inside"
-                                    ?
-                                    "INSIDE GAME"
-                                    :
-                                    "OUTSIDE GAME"
-                                }
-
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="
-                                history-code
-                                ${pull.side}
-                            "
-                        >
-                            ${pull.code}
-                        </div>
-
-
-                        <div
-                            class="
-                                history-commitment
-                                ${commitmentClass}
-                            "
-                        >
-                            ${formatCommitment(
-                                pull.commitment
-                            )}
-                        </div>
-
-
-                        <div
-                            class="
-                                history-result
-                                ${resultClass}
-                            "
-                        >
-                            ${getResultLabel(
-                                pull.result
-                            )}
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-        )
-        .join("");
-
-
     updateStats();
+
+    updatePerformanceHighlights();
+
+    renderTechniquePerformance();
+
+    updateHeatmap();
 
     updateSessionProgress();
 
     updatePullButton();
+
+    renderSessionSummary();
 
 }
 
@@ -1235,7 +2563,8 @@ function addPullToHistory(
 
 
     pendingPullIndex =
-        sessionHistory.length - 1;
+        sessionHistory.length -
+        1;
 
 
     saveSession();
@@ -1256,7 +2585,8 @@ function rateCurrentPull(
 ) {
 
     if (
-        pendingPullIndex === null
+        pendingPullIndex ===
+        null
     ) {
 
         return;
@@ -1270,7 +2600,9 @@ function rateCurrentPull(
         ];
 
 
-    if (!pull) {
+    if (
+        !pull
+    ) {
 
         return;
 
@@ -1291,7 +2623,27 @@ function rateCurrentPull(
 
     renderHistory();
 
-    updatePullButton();
+
+    if (
+        isSessionComplete()
+    ) {
+
+        setTimeout(
+            () => {
+
+                sessionSummary.scrollIntoView({
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "start"
+                });
+
+            },
+            250
+        );
+
+    }
 
 }
 
@@ -1316,21 +2668,27 @@ function getFinalWinner(
 
 
     if (
-        eligibleNodes.length <= 1
+        eligibleNodes.length <=
+        1
     ) {
 
-        return eligibleNodes[0];
+        return eligibleNodes[
+            0
+        ];
 
     }
 
 
     const lastPull =
         sessionHistory[
-            sessionHistory.length - 1
+            sessionHistory.length -
+            1
         ];
 
 
-    if (!lastPull) {
+    if (
+        !lastPull
+    ) {
 
         return randomItem(
             eligibleNodes
@@ -1347,19 +2705,16 @@ function getFinalWinner(
         );
 
 
-    if (
-        candidates.length === 0
-    ) {
-
-        return randomItem(
+    return (
+        candidates.length > 0
+        ?
+        randomItem(
+            candidates
+        )
+        :
+        randomItem(
             eligibleNodes
-        );
-
-    }
-
-
-    return randomItem(
-        candidates
+        )
     );
 
 }
@@ -1387,7 +2742,8 @@ async function startPull() {
 
 
     if (
-        eligibleNodes.length === 0
+        eligibleNodes.length ===
+        0
     ) {
 
         updateSettingsUI();
@@ -1397,7 +2753,9 @@ async function startPull() {
     }
 
 
-    pulling = true;
+    pulling =
+        true;
+
 
     hideOutcomePanel();
 
@@ -1412,9 +2770,11 @@ async function startPull() {
         "READING THE TABLE";
 
 
-    clearNodes();
+    clearActiveNodes();
 
-    setCommitment(0);
+    setCommitment(
+        0
+    );
 
 
     const rouletteSpeeds = [
@@ -1435,7 +2795,8 @@ async function startPull() {
     ];
 
 
-    let previousNode = null;
+    let previousNode =
+        null;
 
 
     for (
@@ -1448,7 +2809,8 @@ async function startPull() {
 
 
         if (
-            eligibleNodes.length > 1 &&
+            eligibleNodes.length >
+            1 &&
             previousNode
         ) {
 
@@ -1468,7 +2830,7 @@ async function startPull() {
             );
 
 
-        clearNodes();
+        clearActiveNodes();
 
 
         currentNode.classList.add(
@@ -1480,12 +2842,14 @@ async function startPull() {
             currentNode;
 
 
-        await wait(speed);
+        await wait(
+            speed
+        );
 
     }
 
 
-    clearNodes();
+    clearActiveNodes();
 
 
     const winner =
@@ -1524,7 +2888,8 @@ async function startPull() {
 
     techniqueSide.textContent =
         `${
-            side === "inside"
+            side ===
+            "inside"
             ?
             "INSIDE GAME"
             :
@@ -1532,7 +2897,9 @@ async function startPull() {
         } • SHOULDER ${formatCommitment(commitment)}`;
 
 
-    await wait(250);
+    await wait(
+        250
+    );
 
 
     setCommitment(
@@ -1559,7 +2926,10 @@ async function startPull() {
 
     pullNumber++;
 
-    pulling = false;
+
+    pulling =
+        false;
+
 
     updatePullButton();
 
@@ -1567,29 +2937,21 @@ async function startPull() {
 
 
 /* =========================
-   CLEAR SESSION
+   RESET SESSION
 ========================= */
 
-function clearSession() {
+function resetSession() {
 
-    const confirmed =
-        confirm(
-            "Clear this practice session?"
-        );
+    sessionHistory =
+        [];
 
 
-    if (!confirmed) {
-
-        return;
-
-    }
+    pendingPullIndex =
+        null;
 
 
-    sessionHistory = [];
-
-    pendingPullIndex = null;
-
-    pullNumber = 1;
+    pullNumber =
+        1;
 
 
     localStorage.removeItem(
@@ -1597,11 +2959,18 @@ function clearSession() {
     );
 
 
-    clearNodes();
+    clearActiveNodes();
 
     hideOutcomePanel();
 
-    setCommitment(0);
+    sessionSummary.classList.add(
+        "hidden"
+    );
+
+
+    setCommitment(
+        0
+    );
 
 
     techniqueText.textContent =
@@ -1624,6 +2993,52 @@ function clearSession() {
 
 
 /* =========================
+   CLEAR SESSION
+========================= */
+
+function clearSession() {
+
+    const confirmed =
+        confirm(
+            "Clear this practice session?"
+        );
+
+
+    if (
+        !confirmed
+    ) {
+
+        return;
+
+    }
+
+
+    resetSession();
+
+}
+
+
+/* =========================
+   NEW SESSION
+========================= */
+
+function startNewSession() {
+
+    resetSession();
+
+
+    window.scrollTo({
+        top:
+            0,
+
+        behavior:
+            "smooth"
+    });
+
+}
+
+
+/* =========================
    SETTINGS EVENTS
 ========================= */
 
@@ -1632,7 +3047,9 @@ settingsToggle.addEventListener(
     () => {
 
         const collapsed =
-            settingsContent.classList.toggle(
+            settingsContent
+            .classList
+            .toggle(
                 "collapsed"
             );
 
@@ -1702,16 +3119,21 @@ lengthButtons.forEach(
 
 
                 settings.sessionLength =
-                    value === "unlimited"
+                    value ===
+                    "unlimited"
                     ?
                     "unlimited"
                     :
-                    Number(value);
+                    Number(
+                        value
+                    );
 
 
                 saveSettings();
 
                 updateSettingsUI();
+
+                renderSessionSummary();
 
             }
         );
@@ -1754,25 +3176,20 @@ techniqueChips.forEach(
 
 
                 const technique =
-                    chip.dataset
-                        .filterTechnique;
+                    chip.dataset.filterTechnique;
 
 
-                const enabled =
-                    settings
-                    .enabledTechniques
-                    .includes(
+                if (
+                    settings.enabledTechniques.includes(
                         technique
-                    );
-
-
-                if (enabled) {
+                    )
+                ) {
 
                     settings.enabledTechniques =
-                        settings.enabledTechniques
-                        .filter(
+                        settings.enabledTechniques.filter(
                             item =>
-                                item !== technique
+                                item !==
+                                technique
                         );
 
                 }
@@ -1850,42 +3267,59 @@ disableAllTechniques.addEventListener(
 
 
 /* =========================
-   RESULT EVENTS
+   HEATMAP EVENTS
+========================= */
+
+heatmapTabs.forEach(
+    tab => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+
+                settings.heatmapMode =
+                    tab.dataset.heatmapMode;
+
+
+                saveSettings();
+
+                updateHeatmap();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================
+   OUTCOME EVENTS
 ========================= */
 
 winButton.addEventListener(
     "click",
-    () => {
-
+    () =>
         rateCurrentPull(
             "win"
-        );
-
-    }
+        )
 );
 
 
 lossButton.addEventListener(
     "click",
-    () => {
-
+    () =>
         rateCurrentPull(
             "loss"
-        );
-
-    }
+        )
 );
 
 
 skipButton.addEventListener(
     "click",
-    () => {
-
+    () =>
         rateCurrentPull(
             "skip"
-        );
-
-    }
+        )
 );
 
 
@@ -1905,6 +3339,12 @@ clearHistoryButton.addEventListener(
 );
 
 
+newSessionButton.addEventListener(
+    "click",
+    startNewSession
+);
+
+
 /* =========================
    INITIALIZE
 ========================= */
@@ -1914,6 +3354,8 @@ saveSession();
 renderHistory();
 
 updateSettingsUI();
+
+updateHeatmap();
 
 
 pullCounter.textContent =
@@ -1925,7 +3367,64 @@ pullCounter.textContent =
     )}`;
 
 
-hideOutcomePanel();
+/* RESTORE PENDING PULL */
+
+if (
+    pendingPullIndex !==
+    null
+) {
+
+    const pendingPull =
+        sessionHistory[
+            pendingPullIndex
+        ];
+
+
+    techniqueText.textContent =
+        pendingPull.technique.toUpperCase();
+
+
+    techniqueSide.textContent =
+        `${
+            pendingPull.side ===
+            "inside"
+            ?
+            "INSIDE GAME"
+            :
+            "OUTSIDE GAME"
+        } • SHOULDER ${formatCommitment(
+            pendingPull.commitment
+        )}`;
+
+
+    pullCounter.textContent =
+        `PULL #${String(
+            pendingPull.number
+        ).padStart(
+            2,
+            "0"
+        )}`;
+
+
+    setCommitment(
+        pendingPull.commitment
+    );
+
+
+    highlightTechnique(
+        pendingPull.technique
+    );
+
+
+    showOutcomePanel();
+
+}
+
+else {
+
+    hideOutcomePanel();
+
+}
 
 
 /* =========================
