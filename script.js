@@ -47,13 +47,7 @@ let pullNumber =
     sessionHistory.length + 1;
 
 
-/*
-    SHOULDER COMMITMENT
-
-    +3 = maximum shoulder commitment
-     0 = neutral
-    -3 = maximum toproll commitment
-*/
+/* SHOULDER COMMITMENT */
 
 const commitmentOptions = {
 
@@ -62,71 +56,43 @@ const commitmentOptions = {
     ],
 
     "Hook & Drag": [
-        0,
-        1,
-        1,
-        2
+        1
     ],
 
     "Hook & Drive": [
-        1,
-        1,
-        2,
-        2,
-        3
+        2
     ],
 
     "Shoulder Press": [
-        2,
-        2,
-        3,
         3
     ],
 
     "Flop Press": [
-        2,
-        3,
-        3,
         3
     ],
 
     "Posting Toproll": [
-        -1,
-        -1,
-        -2,
-        -2
+        -1
     ],
 
     "Sweeping Toproll": [
-        -1,
-        -1,
         -2
     ],
 
     "Low-Hand Toproll": [
-        -1,
-        -2,
-        -2,
-        -3
+        -2
     ],
 
     "Open Toproll": [
-        -2,
-        -2,
         -3
     ],
 
     "King's Move": [
-        -2,
-        -3,
-        -3,
         -3
     ]
 
 };
 
-
-/* UTILITIES */
 
 function clearNodes() {
 
@@ -188,8 +154,6 @@ function formatCommitment(value) {
 }
 
 
-/* SHOULDER */
-
 function setCommitment(value) {
 
     const positions = {
@@ -244,8 +208,6 @@ function setCommitment(value) {
 }
 
 
-/* STORAGE */
-
 function saveSession() {
 
     localStorage.setItem(
@@ -255,8 +217,6 @@ function saveSession() {
 
 }
 
-
-/* STATS */
 
 function updateStats() {
 
@@ -289,8 +249,7 @@ function updateStats() {
                     currentTotal,
                     pull
                 ) =>
-                    currentTotal
-                    +
+                    currentTotal +
                     pull.commitment,
                 0
             );
@@ -331,8 +290,6 @@ function updateStats() {
 
 }
 
-
-/* HISTORY */
 
 function renderHistory() {
 
@@ -460,8 +417,6 @@ function renderHistory() {
 }
 
 
-/* ADD PULL */
-
 function addPullToHistory(
     technique,
     code,
@@ -471,15 +426,20 @@ function addPullToHistory(
 
     const pull = {
 
-        number: pullNumber,
+        number:
+            pullNumber,
 
-        technique: technique,
+        technique:
+            technique,
 
-        code: code,
+        code:
+            code,
 
-        side: side,
+        side:
+            side,
 
-        commitment: commitment,
+        commitment:
+            commitment,
 
         date:
             new Date()
@@ -488,7 +448,9 @@ function addPullToHistory(
     };
 
 
-    sessionHistory.push(pull);
+    sessionHistory.push(
+        pull
+    );
 
 
     saveSession();
@@ -498,8 +460,6 @@ function addPullToHistory(
 
 }
 
-
-/* PRACTICE PULL */
 
 async function startPull() {
 
@@ -513,7 +473,9 @@ async function startPull() {
     pulling = true;
 
 
-    button.disabled = true;
+    button.disabled =
+        true;
+
 
     button.textContent =
         "PULLING...";
@@ -681,8 +643,6 @@ async function startPull() {
 }
 
 
-/* CLEAR */
-
 function clearSession() {
 
     const confirmed =
@@ -735,8 +695,6 @@ function clearSession() {
 }
 
 
-/* EVENTS */
-
 button.addEventListener(
     "click",
     startPull
@@ -748,8 +706,6 @@ clearHistoryButton.addEventListener(
     clearSession
 );
 
-
-/* INITIAL LOAD */
 
 renderHistory();
 

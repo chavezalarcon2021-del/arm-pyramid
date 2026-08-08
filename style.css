@@ -22,7 +22,6 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-
     overflow-x: hidden;
 
     background:
@@ -43,96 +42,63 @@ body {
         sans-serif;
 }
 
-
-/* MAIN */
-
 .app-shell {
     width: min(94%, 1020px);
-
     margin: 0 auto;
-
     padding: 35px 0 70px;
 }
 
-
-/* HEADER */
-
 .hero {
     text-align: center;
-
     margin-bottom: 28px;
 }
 
 .eyebrow {
     color: var(--red);
-
     font-size: 12px;
     font-weight: 800;
-
     letter-spacing: 5px;
-
     margin-bottom: 10px;
 }
 
 .hero h1 {
     margin: 0;
-
     font-size: clamp(40px, 6vw, 70px);
-
     letter-spacing: clamp(5px, 1vw, 10px);
-
     line-height: 1;
 }
 
 .hero p {
     margin: 12px 0 0;
-
     color: #808a91;
-
     font-size: clamp(14px, 2vw, 18px);
 }
-
-
-/* MODE TABS */
 
 .mode-tabs {
     width: fit-content;
     max-width: 100%;
-
     margin: 0 auto 22px;
-
     display: flex;
-
     padding: 5px;
-
     background: #0c1114;
-
     border: 1px solid var(--border);
     border-radius: 30px;
 }
 
 .mode-tab {
     border: 0;
-
     padding: 16px 30px;
-
     border-radius: 25px;
-
     background: transparent;
-
     color: #7b858b;
-
     font-size: 13px;
     font-weight: 800;
-
     letter-spacing: 1px;
-
     white-space: nowrap;
 }
 
 .mode-tab.active {
     color: white;
-
     border: 1px solid var(--red);
 
     background:
@@ -149,27 +115,16 @@ body {
 
 .mode-tab span {
     margin-left: 8px;
-
     padding: 4px 7px;
-
     border-radius: 999px;
-
     background: #222b30;
-
     font-size: 9px;
 }
 
-
-/* PRACTICE PANEL */
-
 .practice-panel {
-    background:
-        rgba(7,12,15,.9);
-
+    background: rgba(7,12,15,.9);
     border: 1px solid #263037;
-
     border-radius: 25px;
-
     padding: 28px;
 
     box-shadow:
@@ -179,61 +134,41 @@ body {
 
 .practice-top {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 20px;
 }
 
 .section-kicker {
     color: var(--red);
-
     font-size: 12px;
     font-weight: 800;
-
     letter-spacing: 1.2px;
 }
 
 .practice-top h2 {
     margin: 6px 0 0;
-
     font-size: clamp(21px, 3vw, 27px);
 }
 
 .ready-pill {
     display: flex;
-
     align-items: center;
-
     gap: 8px;
-
     color: #4dff9c;
-
-    background:
-        rgba(35,226,125,.08);
-
-    border:
-        1px solid
-        rgba(35,226,125,.12);
-
+    background: rgba(35,226,125,.08);
+    border: 1px solid rgba(35,226,125,.12);
     border-radius: 999px;
-
     padding: 10px 16px;
-
     font-size: 12px;
     font-weight: 800;
-
     white-space: nowrap;
 }
 
 .ready-dot {
     width: 11px;
     height: 11px;
-
     border-radius: 50%;
-
     background: var(--green);
 
     box-shadow:
@@ -241,46 +176,30 @@ body {
         rgba(35,226,125,.85);
 }
 
-
-/* PYRAMID */
-
 .pyramid-zone {
     position: relative;
-
     width: min(100%, 850px);
-
     aspect-ratio: 800 / 560;
-
     margin: 15px auto 12px;
 }
 
 .pyramid-lines {
     position: absolute;
-
     inset: 0;
-
     width: 100%;
     height: 100%;
 }
 
 .pyramid-lines line {
     stroke: #dbe2e5;
-
     stroke-width: 1.7;
 }
 
-
-/* TECHNIQUE NODES */
-
 .technique-node {
     position: absolute;
-
     display: flex;
-
     align-items: center;
-
     gap: clamp(6px, 1vw, 11px);
-
     font-weight: 700;
 
     transition:
@@ -298,15 +217,12 @@ body {
 
 .technique-name {
     font-size: clamp(9px, 1.6vw, 15px);
-
     letter-spacing: .4px;
 }
 
 .technique-code {
     margin-top: 4px;
-
     font-size: clamp(8px, 1.3vw, 12px);
-
     font-weight: 700;
 }
 
@@ -321,16 +237,10 @@ body {
 .node-dot {
     width: clamp(15px, 2.8vw, 24px);
     height: clamp(15px, 2.8vw, 24px);
-
     flex-shrink: 0;
-
     border-radius: 50%;
-
     background: #11181c;
-
-    border:
-        clamp(2px, .3vw, 3px)
-        solid white;
+    border: clamp(2px, .3vw, 3px) solid white;
 }
 
 .technique-node[data-side="inside"] .node-dot {
@@ -345,20 +255,12 @@ body {
         rgba(47,124,255,.55);
 }
 
-
-/* NODE POSITIONS */
-
 .apex {
     left: 50%;
     top: 2%;
-
-    transform:
-        translateX(-50%);
-
+    transform: translateX(-50%);
     flex-direction: column;
-
     gap: 4px;
-
     text-align: center;
 }
 
@@ -407,53 +309,31 @@ body {
     top: 91%;
 }
 
-
-/* SIDE WORDS */
-
 .inside-word,
 .outside-word {
     position: absolute;
-
     top: 52%;
-
-    font-size:
-        clamp(15px, 3vw, 28px);
-
+    font-size: clamp(15px, 3vw, 28px);
     font-weight: 900;
-
-    letter-spacing:
-        clamp(4px, 1vw, 8px);
-
+    letter-spacing: clamp(4px, 1vw, 8px);
     opacity: .65;
 }
 
 .inside-word {
     left: 29%;
-
     color: #7e101c;
-
-    transform:
-        rotate(-57deg);
+    transform: rotate(-57deg);
 }
 
 .outside-word {
     right: 24%;
-
     color: #0f397e;
-
-    transform:
-        rotate(57deg);
+    transform: rotate(57deg);
 }
 
-
-/* ACTIVE */
-
 .technique-node.active {
-    transform:
-        scale(1.08);
-
-    filter:
-        brightness(1.4);
+    transform: scale(1.08);
+    filter: brightness(1.4);
 }
 
 .apex.active {
@@ -477,7 +357,6 @@ body {
 
 .technique-node.winner[data-side="inside"] .node-dot {
     background: var(--red);
-
     border-color: var(--red);
 
     box-shadow:
@@ -492,7 +371,6 @@ body {
 
 .technique-node.winner[data-side="outside"] .node-dot {
     background: var(--blue);
-
     border-color: var(--blue);
 
     box-shadow:
@@ -501,15 +379,9 @@ body {
         0 0 70px rgba(47,124,255,.75);
 }
 
-
-/* RESULT */
-
 .result-card {
     margin-top: 22px;
-
-    padding:
-        clamp(20px, 4vw, 26px);
-
+    padding: clamp(20px, 4vw, 26px);
     text-align: center;
 
     background:
@@ -520,65 +392,43 @@ body {
         );
 
     border: 1px solid #222c31;
-
     border-radius: 20px;
 }
 
 .result-top-row {
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: 12px 20px;
 }
 
 .result-label,
 #pullCounter {
     color: #7b858c;
-
     font-size: 11px;
-
     font-weight: 800;
-
     letter-spacing: 2px;
 }
 
 .result-technique {
     margin-top: 8px;
-
-    font-size:
-        clamp(27px, 5vw, 34px);
-
+    font-size: clamp(27px, 5vw, 34px);
     font-weight: 900;
 }
 
 .result-side {
     margin-top: 5px;
-
     color: #68747b;
-
     font-size: 11px;
-
     letter-spacing: 2px;
 }
 
-
-/* START BUTTON */
-
 #trainButton {
     width: 100%;
-
     margin-top: 17px;
-
     padding: 20px;
-
-    border:
-        1px solid #ff3d4f;
-
+    border: 1px solid #ff3d4f;
     border-radius: 18px;
 
     background:
@@ -590,14 +440,9 @@ body {
         );
 
     color: white;
-
-    font-size:
-        clamp(15px, 2.5vw, 18px);
-
+    font-size: clamp(15px, 2.5vw, 18px);
     font-weight: 900;
-
     letter-spacing: 2px;
-
     cursor: pointer;
 }
 
@@ -605,33 +450,19 @@ body {
     opacity: .6;
 }
 
-
-/* SHOULDER COMMITMENT */
-
 .commitment-card {
     margin-top: 18px;
-
-    padding:
-        clamp(16px, 4vw, 24px);
-
+    padding: clamp(16px, 4vw, 24px);
     background: #0a0f12;
-
     border: 1px solid #242e34;
-
     border-radius: 20px;
 }
 
 .commitment-title {
     text-align: center;
-
-    font-size:
-        clamp(15px, 3vw, 20px);
-
+    font-size: clamp(15px, 3vw, 20px);
     font-weight: 900;
-
-    letter-spacing:
-        clamp(1px, .5vw, 3px);
-
+    letter-spacing: clamp(1px, .5vw, 3px);
     margin-bottom: 20px;
 }
 
@@ -644,42 +475,27 @@ body {
         clamp(44px, 8vw, 60px);
 
     align-items: center;
-
-    gap:
-        clamp(8px, 2vw, 18px);
+    gap: clamp(8px, 2vw, 18px);
 }
 
 .commitment-box {
     width: 100%;
-
     aspect-ratio: 1;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     border-radius: 14px;
-
-    font-size:
-        clamp(28px, 5vw, 35px);
+    font-size: clamp(28px, 5vw, 35px);
 }
 
 .commitment-box.positive {
-    background:
-        rgba(255,36,54,.16);
-
-    border:
-        1px solid var(--red);
+    background: rgba(255,36,54,.16);
+    border: 1px solid var(--red);
 }
 
 .commitment-box.negative {
-    background:
-        rgba(47,124,255,.16);
-
-    border:
-        1px solid var(--blue);
+    background: rgba(47,124,255,.16);
+    border: 1px solid var(--blue);
 }
 
 .commitment-scale {
@@ -688,9 +504,7 @@ body {
 
 .scale-track {
     position: relative;
-
     height: 4px;
-
     display: flex;
 }
 
@@ -709,20 +523,12 @@ body {
 
 .scale-center-dot {
     position: absolute;
-
     left: 50%;
     top: 50%;
-
-    width:
-        clamp(18px, 4vw, 24px);
-
-    height:
-        clamp(18px, 4vw, 24px);
-
+    width: clamp(18px, 4vw, 24px);
+    height: clamp(18px, 4vw, 24px);
     border-radius: 50%;
-
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     transition:
         left .65s ease,
@@ -736,31 +542,20 @@ body {
 
 .scale-center-dot.inside {
     background: var(--red);
-
-    box-shadow:
-        0 0 18px var(--red);
+    box-shadow: 0 0 18px var(--red);
 }
 
 .scale-center-dot.outside {
     background: var(--blue);
-
-    box-shadow:
-        0 0 18px var(--blue);
+    box-shadow: 0 0 18px var(--blue);
 }
 
 .scale-labels {
     display: grid;
-
-    grid-template-columns:
-        repeat(7, 1fr);
-
+    grid-template-columns: repeat(7, 1fr);
     margin-top: 13px;
-
     text-align: center;
-
-    font-size:
-        clamp(9px, 2vw, 13px);
-
+    font-size: clamp(9px, 2vw, 13px);
     font-weight: 700;
 }
 
@@ -778,35 +573,25 @@ body {
 
 .commitment-descriptions {
     display: flex;
-
-    justify-content:
-        space-between;
-
+    justify-content: space-between;
     gap: 20px;
-
     margin-top: 20px;
 }
 
 .commitment-description {
     display: flex;
-
     flex-direction: column;
-
     gap: 6px;
-
     width: 48%;
 }
 
 .commitment-description strong {
-    font-size:
-        clamp(9px, 2vw, 12px);
+    font-size: clamp(9px, 2vw, 12px);
 }
 
 .commitment-description span {
     color: #7b858b;
-
-    font-size:
-        clamp(9px, 2vw, 12px);
+    font-size: clamp(9px, 2vw, 12px);
 }
 
 .inside-description strong {
@@ -821,105 +606,69 @@ body {
     color: var(--blue);
 }
 
-
-/* HISTORY */
-
 .history-section {
     margin-top: 20px;
-
-    padding:
-        clamp(16px, 4vw, 24px);
-
+    padding: clamp(16px, 4vw, 24px);
     background: #0a0f12;
-
     border: 1px solid #242e34;
-
     border-radius: 20px;
 }
 
 .history-header {
     display: flex;
-
-    justify-content:
-        space-between;
-
+    justify-content: space-between;
     align-items: center;
-
     gap: 15px;
-
     margin-bottom: 20px;
 }
 
 .history-kicker {
     color: #69767d;
-
     font-size: 10px;
-
     font-weight: 800;
-
     letter-spacing: 2px;
 }
 
 .history-header h3 {
     margin: 5px 0 0;
-
     font-size: 23px;
 }
 
 #clearHistoryButton {
     padding: 10px 14px;
-
     background: transparent;
-
     color: #7d888e;
-
     border: 1px solid #2c363c;
-
     border-radius: 10px;
-
     cursor: pointer;
-
     white-space: nowrap;
 }
 
 .stats-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
-
     margin-bottom: 16px;
 }
 
 .stat-card {
     padding: 18px 8px;
-
     text-align: center;
-
     background: #0d1316;
-
     border: 1px solid #202a30;
-
     border-radius: 14px;
 }
 
 .stat-card span {
     display: block;
-
     color: #66737a;
-
     font-size: 9px;
-
     font-weight: 800;
-
     margin-bottom: 8px;
 }
 
 .stat-card strong {
-    font-size:
-        clamp(20px, 4vw, 24px);
+    font-size: clamp(20px, 4vw, 24px);
 }
 
 .inside-stat strong {
@@ -932,22 +681,15 @@ body {
 
 .history-list {
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
 }
 
 .history-empty {
     padding: 30px;
-
     text-align: center;
-
     color: #66737a;
-
-    border:
-        1px dashed #273138;
-
+    border: 1px dashed #273138;
     border-radius: 14px;
 }
 
@@ -961,74 +703,54 @@ body {
         auto;
 
     gap: 15px;
-
     align-items: center;
-
     padding: 14px 16px;
-
     background: #0c1215;
-
-    border:
-        1px solid #20292e;
-
+    border: 1px solid #20292e;
     border-radius: 12px;
 }
 
 .history-number {
     color: #59666c;
-
     font-size: 10px;
-
     font-weight: 800;
 }
 
 .history-technique {
     display: flex;
-
     flex-direction: column;
-
     min-width: 0;
 }
 
 .history-technique strong {
     overflow: hidden;
-
     text-overflow: ellipsis;
-
     white-space: nowrap;
 }
 
 .history-technique span {
     color: #66737a;
-
     font-size: 10px;
 }
 
 .history-code {
     padding: 6px 8px;
-
     border-radius: 8px;
-
     font-weight: 900;
 }
 
 .history-code.inside {
     color: var(--red);
-
-    background:
-        rgba(255,36,54,.09);
+    background: rgba(255,36,54,.09);
 }
 
 .history-code.outside {
     color: var(--blue);
-
-    background:
-        rgba(47,124,255,.09);
+    background: rgba(47,124,255,.09);
 }
 
 .history-commitment {
     font-weight: 800;
-
     white-space: nowrap;
 }
 
@@ -1043,9 +765,6 @@ body {
 .history-commitment.neutral {
     color: white;
 }
-
-
-/* TABLET */
 
 @media (max-width: 850px) {
 
@@ -1063,16 +782,11 @@ body {
     }
 }
 
-
-/* PHONE */
-
 @media (max-width: 600px) {
 
     .app-shell {
         width: 100%;
-
-        padding:
-            18px 8px 50px;
+        padding: 18px 8px 50px;
     }
 
     .hero {
@@ -1081,13 +795,11 @@ body {
 
     .eyebrow {
         font-size: 9px;
-
         letter-spacing: 3px;
     }
 
     .hero h1 {
         font-size: 30px;
-
         letter-spacing: 4px;
     }
 
@@ -1095,25 +807,16 @@ body {
         font-size: 13px;
     }
 
-
-    /* MODE */
-
     .mode-tabs {
         width: 100%;
-
         display: grid;
-
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .mode-tab {
         width: 100%;
-
         padding: 12px 6px;
-
         font-size: 9px;
-
         letter-spacing: .4px;
     }
 
@@ -1121,18 +824,13 @@ body {
         display: none;
     }
 
-
-    /* PANEL */
-
     .practice-panel {
         padding: 16px 8px;
-
         border-radius: 20px;
     }
 
     .practice-top {
         align-items: flex-start;
-
         gap: 8px;
     }
 
@@ -1146,7 +844,6 @@ body {
 
     .ready-pill {
         padding: 7px 8px;
-
         font-size: 8px;
     }
 
@@ -1155,35 +852,23 @@ body {
         height: 8px;
     }
 
-
-    /* MOBILE PYRAMID */
-
     .pyramid-zone {
         width: 100%;
-
         aspect-ratio: 1 / .82;
-
-        margin:
-            12px auto 8px;
+        margin: 12px auto 8px;
     }
 
     .technique-name {
-        font-size:
-            clamp(7px, 2.25vw, 10px);
+        font-size: clamp(7px, 2.25vw, 10px);
     }
 
     .technique-code {
-        font-size:
-            clamp(7px, 2vw, 9px);
+        font-size: clamp(7px, 2vw, 9px);
     }
 
     .node-dot {
-        width:
-            clamp(12px, 4vw, 17px);
-
-        height:
-            clamp(12px, 4vw, 17px);
-
+        width: clamp(12px, 4vw, 17px);
+        height: clamp(12px, 4vw, 17px);
         border-width: 2px;
     }
 
@@ -1239,9 +924,7 @@ body {
     .inside-word,
     .outside-word {
         top: 51%;
-
         font-size: 13px;
-
         letter-spacing: 4px;
     }
 
@@ -1253,19 +936,14 @@ body {
         right: 20%;
     }
 
-
-    /* RESULT */
-
     .result-card {
         margin-top: 8px;
-
         padding: 17px 8px;
     }
 
     .result-label,
     #pullCounter {
         font-size: 8px;
-
         letter-spacing: 1px;
     }
 
@@ -1275,21 +953,13 @@ body {
 
     .result-side {
         font-size: 8px;
-
         letter-spacing: 1px;
     }
 
-
-    /* BUTTON */
-
     #trainButton {
         padding: 17px 10px;
-
         font-size: 15px;
     }
-
-
-    /* COMMITMENT */
 
     .commitment-card {
         padding: 18px 10px;
@@ -1322,12 +992,8 @@ body {
 
     .commitment-description span {
         font-size: 8px;
-
         line-height: 1.35;
     }
-
-
-    /* HISTORY */
 
     .history-section {
         padding: 17px 10px;
@@ -1343,7 +1009,6 @@ body {
 
     #clearHistoryButton {
         padding: 8px 8px;
-
         font-size: 8px;
     }
 
@@ -1363,7 +1028,6 @@ body {
             auto;
 
         gap: 7px;
-
         padding: 12px 8px;
     }
 
@@ -1377,25 +1041,19 @@ body {
 
     .history-code {
         font-size: 9px;
-
         padding: 5px 7px;
     }
 
     .history-commitment {
         grid-column: 2 / 4;
-
         font-size: 9px;
     }
 }
-
-
-/* EXTRA SMALL */
 
 @media (max-width: 390px) {
 
     .hero h1 {
         font-size: 27px;
-
         letter-spacing: 3px;
     }
 
