@@ -36,6 +36,11 @@ const nodes =
         document.querySelectorAll(".technique-node")
     );
 
+
+/* =========================
+   SESSION
+========================= */
+
 let pulling = false;
 
 let sessionHistory =
@@ -47,52 +52,42 @@ let pullNumber =
     sessionHistory.length + 1;
 
 
-/* SHOULDER COMMITMENT */
+/* =========================
+   FIXED SHOULDER COMMITMENT
 
-const commitmentOptions = {
+   +3 = Maximum shoulder commitment
+    0 = Neutral
+   -3 = Maximum toproll commitment
+========================= */
 
-    "High Hook": [
-        0
-    ],
+const commitmentByTechnique = {
 
-    "Hook & Drag": [
-        1
-    ],
+    "Flop Press": 3,
 
-    "Hook & Drive": [
-        2
-    ],
+    "Shoulder Press": 3,
 
-    "Shoulder Press": [
-        3
-    ],
+    "Hook & Drive": 2,
 
-    "Flop Press": [
-        3
-    ],
+    "Hook & Drag": 1,
 
-    "Posting Toproll": [
-        -1
-    ],
+    "High Hook": 0,
 
-    "Sweeping Toproll": [
-        -2
-    ],
+    "Posting Toproll": -1,
 
-    "Low-Hand Toproll": [
-        -2
-    ],
+    "Sweeping Toproll": -2,
 
-    "Open Toproll": [
-        -3
-    ],
+    "Low-Hand Toproll": -2,
 
-    "King's Move": [
-        -3
-    ]
+    "Open Toproll": -3,
+
+    "King's Move": -3
 
 };
 
+
+/* =========================
+   CLEAR PYRAMID
+========================= */
 
 function clearNodes() {
 
@@ -108,38 +103,43 @@ function clearNodes() {
 }
 
 
+/* =========================
+   RANDOM TECHNIQUE
+========================= */
+
 function getRandomNode() {
 
-    return nodes[
+    const randomIndex =
         Math.floor(
             Math.random() * nodes.length
-        )
-    ];
+        );
+
+    return nodes[randomIndex];
 
 }
 
 
-function randomFromArray(array) {
-
-    return array[
-        Math.floor(
-            Math.random() * array.length
-        )
-    ];
-
-}
-
+/* =========================
+   WAIT
+========================= */
 
 function wait(ms) {
 
     return new Promise(resolve => {
 
-        setTimeout(resolve, ms);
+        setTimeout(
+            resolve,
+            ms
+        );
 
     });
 
 }
 
+
+/* =========================
+   FORMAT COMMITMENT
+========================= */
 
 function formatCommitment(value) {
 
@@ -154,17 +154,26 @@ function formatCommitment(value) {
 }
 
 
+/* =========================
+   SHOULDER INDICATOR
+========================= */
+
 function setCommitment(value) {
 
     const positions = {
 
         3: 0,
+
         2: 16.67,
+
         1: 33.33,
+
         0: 50,
 
         "-1": 66.67,
+
         "-2": 83.33,
+
         "-3": 100
 
     };
@@ -208,6 +217,10 @@ function setCommitment(value) {
 }
 
 
+/* =========================
+   SAVE SESSION
+========================= */
+
 function saveSession() {
 
     localStorage.setItem(
@@ -217,6 +230,10 @@ function saveSession() {
 
 }
 
+
+/* =========================
+   UPDATE STATISTICS
+========================= */
 
 function updateStats() {
 
@@ -291,6 +308,10 @@ function updateStats() {
 }
 
 
+/* =========================
+   RENDER HISTORY
+========================= */
+
 function renderHistory() {
 
     if (sessionHistory.length === 0) {
@@ -354,7 +375,10 @@ function renderHistory() {
 
                         #${String(
                             pull.number
-                        ).padStart(2, "0")}
+                        ).padStart(
+                            2,
+                            "0"
+                        )}
 
                     </div>
 
@@ -417,6 +441,10 @@ function renderHistory() {
 }
 
 
+/* =========================
+   ADD PULL TO HISTORY
+========================= */
+
 function addPullToHistory(
     technique,
     code,
@@ -442,8 +470,7 @@ function addPullToHistory(
             commitment,
 
         date:
-            new Date()
-            .toISOString()
+            new Date().toISOString()
 
     };
 
@@ -460,6 +487,10 @@ function addPullToHistory(
 
 }
 
+
+/* =========================
+   PRACTICE PULL
+========================= */
 
 async function startPull() {
 
@@ -492,8 +523,17 @@ async function startPull() {
     clearNodes();
 
 
+    /*
+        Reset shoulder indicator
+        before roulette
+    */
+
     setCommitment(0);
 
+
+    /* =========================
+       ROULETTE ANIMATION
+    ========================= */
 
     const rouletteSpeeds = [
 
@@ -528,6 +568,11 @@ async function startPull() {
             getRandomNode();
 
 
+        /*
+            Prevent same node from
+            flashing twice in a row
+        */
+
         while (
             currentNode ===
             previousNode
@@ -551,10 +596,16 @@ async function startPull() {
             currentNode;
 
 
-        await wait(speed);
+        await wait(
+            speed
+        );
 
     }
 
+
+    /* =========================
+       FINAL WINNER
+    ========================= */
 
     clearNodes();
 
@@ -583,13 +634,22 @@ async function startPull() {
         winner.dataset.side;
 
 
-    const commitment =
-        randomFromArray(
-            commitmentOptions[
-                techniqueName
-            ]
-        );
+    /* =========================
+       FIXED COMMITMENT
 
+       IMPORTANT:
+       There is NO randomness here.
+    ========================= */
+
+    const commitment =
+        commitmentByTechnique[
+            techniqueName
+        ];
+
+
+    /* =========================
+       DISPLAY RESULT
+    ========================= */
 
     techniqueText.textContent =
         techniqueName
@@ -604,7 +664,13 @@ async function startPull() {
         } • SHOULDER ${formatCommitment(commitment)}`;
 
 
-    await wait(250);
+    /* =========================
+       MOVE SHOULDER INDICATOR
+    ========================= */
+
+    await wait(
+        250
+    );
 
 
     setCommitment(
@@ -612,11 +678,22 @@ async function startPull() {
     );
 
 
+    /* =========================
+       PULL NUMBER
+    ========================= */
+
     pullCounter.textContent =
         `PULL #${String(
             pullNumber
-        ).padStart(2, "0")}`;
+        ).padStart(
+            2,
+            "0"
+        )}`;
 
+
+    /* =========================
+       SAVE RESULT
+    ========================= */
 
     addPullToHistory(
         techniqueName,
@@ -628,6 +705,10 @@ async function startPull() {
 
     pullNumber++;
 
+
+    /* =========================
+       RESET BUTTON
+    ========================= */
 
     button.innerHTML =
         "↻ PULL AGAIN";
@@ -642,6 +723,10 @@ async function startPull() {
 
 }
 
+
+/* =========================
+   CLEAR SESSION
+========================= */
 
 function clearSession() {
 
@@ -658,9 +743,12 @@ function clearSession() {
     }
 
 
-    sessionHistory = [];
+    sessionHistory =
+        [];
 
-    pullNumber = 1;
+
+    pullNumber =
+        1;
 
 
     localStorage.removeItem(
@@ -671,7 +759,9 @@ function clearSession() {
     clearNodes();
 
 
-    setCommitment(0);
+    setCommitment(
+        0
+    );
 
 
     techniqueText.textContent =
@@ -695,6 +785,10 @@ function clearSession() {
 }
 
 
+/* =========================
+   BUTTON EVENTS
+========================= */
+
 button.addEventListener(
     "click",
     startPull
@@ -707,10 +801,17 @@ clearHistoryButton.addEventListener(
 );
 
 
+/* =========================
+   INITIAL LOAD
+========================= */
+
 renderHistory();
 
 
 pullCounter.textContent =
     `PULL #${String(
         pullNumber
-    ).padStart(2, "0")}`;
+    ).padStart(
+        2,
+        "0"
+    )}`;
